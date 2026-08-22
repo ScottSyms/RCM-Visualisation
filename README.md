@@ -4,6 +4,12 @@ An interactive 3D visualisation of the RADARSAT Constellation Mission (RCM), bui
 
 This is an independent visualisation and is not an official product of the Canadian Space Agency or the Government of Canada.
 
+## Demo
+
+<video src="images/rcm_gif_sm.mp4" controls muted loop playsinline width="100%"></video>
+
+[Watch the RCM Visualisation demo (MP4)](images/rcm_gif_sm.mp4)
+
 ## Features
 
 - SGP4 propagation for RCM-1, RCM-2, and RCM-3
