@@ -44,7 +44,7 @@ interface SweepState {
   color: Color;
 }
 
-export interface LeadingEdge {
+interface LeadingEdge {
   min: Cartesian3;
   center: Cartesian3;
   max: Cartesian3;
@@ -244,8 +244,8 @@ export class AcquisitionRenderer {
     Cesium.Cartesian3.clone(edge.max, this.curtainPos[2]);
   }
 
-  /** Ground target shared by the sweep curtain and acquisition camera. */
-  leadingEdgeAt(id: string, tMs: number): LeadingEdge | null {
+  /** Current leading edge of the active acquisition sweep. */
+  private leadingEdgeAt(id: string, tMs: number): LeadingEdge | null {
     const s = this.sweep;
     if (!s || s.acq.id !== id) return null;
     const span = s.acq.endMs - s.acq.startMs;

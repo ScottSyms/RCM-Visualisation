@@ -2,10 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { createViewer } from '../cesium/ViewerFactory.ts';
   import { loadMissionData, plannedWindow } from '../lib/data.ts';
-  import {
-    ACQUISITION_POST_ROLL_MS,
-    MissionController,
-  } from '../mission/MissionController.ts';
+  import { MissionController } from '../mission/MissionController.ts';
   import Timeline from '../timeline/Timeline.svelte';
   import LayerDrawer from '../ui/LayerDrawer.svelte';
   import AcquisitionCard from '../ui/AcquisitionCard.svelte';
@@ -55,14 +52,13 @@
       }
       const seed = data.manifest.clockSeedMs ?? win.startMs;
       const runtimeStart = Math.min(win.startMs, seed);
-      const runtimeEnd = win.endMs + ACQUISITION_POST_ROLL_MS;
       await ctrl.build(
         { manifest: data.manifest, satellites: data.satellites, planned: data.planned, past: data.past },
         data.ephemeris,
-        { startMs: runtimeStart, endMs: runtimeEnd, seedMs: seed },
+        { startMs: runtimeStart, endMs: win.endMs, seedMs: seed },
       );
       startMs = runtimeStart;
-      endMs = runtimeEnd;
+      endMs = win.endMs;
       phase = 'ready';
     } catch (e) {
       const se = e as { name?: string; notFound?: boolean };
@@ -110,12 +106,17 @@
     playing={ctrl.playing}
     speed={ctrl.speed}
     mode={ctrl.mode}
+    satelliteViewHeightKm={ctrl.satelliteViewHeightKm}
+    satelliteViewSat={ctrl.satelliteViewSat}
+    satellites={ctrl.satviews()}
     {startMs}
     {endMs}
     onTogglePlay={() => ctrl?.togglePlay()}
     onSpeed={(m) => ctrl?.setSpeed(m)}
     onSeek={(ms) => ctrl?.seek(ms)}
     onMode={(m) => ctrl?.setMode(m)}
+    onSatelliteViewHeight={(deltaKm) => ctrl?.adjustSatelliteViewHeight(deltaKm)}
+    onSatelliteViewSat={(norad) => ctrl?.selectSatelliteView(norad)}
   />
 
   <Diagnostics diagnostics={ctrl.diagnostics} />
