@@ -2,7 +2,10 @@
   import { onMount, onDestroy } from 'svelte';
   import { createViewer } from '../cesium/ViewerFactory.ts';
   import { loadMissionData, plannedWindow } from '../lib/data.ts';
-  import { MissionController } from '../mission/MissionController.ts';
+  import {
+    ACQUISITION_POST_ROLL_MS,
+    MissionController,
+  } from '../mission/MissionController.ts';
   import Timeline from '../timeline/Timeline.svelte';
   import LayerDrawer from '../ui/LayerDrawer.svelte';
   import AcquisitionCard from '../ui/AcquisitionCard.svelte';
@@ -51,13 +54,15 @@
         return;
       }
       const seed = data.manifest.clockSeedMs ?? win.startMs;
+      const runtimeStart = Math.min(win.startMs, seed);
+      const runtimeEnd = win.endMs + ACQUISITION_POST_ROLL_MS;
       await ctrl.build(
         { manifest: data.manifest, satellites: data.satellites, planned: data.planned, past: data.past },
         data.ephemeris,
-        { startMs: win.startMs, endMs: win.endMs, seedMs: seed },
+        { startMs: runtimeStart, endMs: runtimeEnd, seedMs: seed },
       );
-      startMs = win.startMs;
-      endMs = win.endMs;
+      startMs = runtimeStart;
+      endMs = runtimeEnd;
       phase = 'ready';
     } catch (e) {
       const se = e as { name?: string; notFound?: boolean };
@@ -97,7 +102,7 @@
     satFilter={ctrl.satFilter}
   />
 
-  <AcquisitionCard selectedAcq={ctrl.selectedAcq} controller={ctrl} />
+  <AcquisitionCard selectedAcq={ctrl.selectedAcq} mode={ctrl.mode} controller={ctrl} />
   <SatelliteCard selectedSat={ctrl.selectedSat} controller={ctrl} />
 
   <Timeline

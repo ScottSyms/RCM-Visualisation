@@ -11,7 +11,7 @@ import type {
   SampledPositionProperty,
   Viewer,
 } from 'cesium';
-import { sampleSat } from '../../scripts/data/ephemeris.ts';
+import { poseAt, sampleSat } from '../../scripts/data/ephemeris.ts';
 import { ecefToGeodetic } from '../lib/geometry.ts';
 import type { SatelliteEphemeris } from './EphemerisLoader.ts';
 
@@ -26,7 +26,7 @@ export interface SatelliteRuntime {
   position: SampledPositionProperty;
 }
 
-/** 30 s along-track grid → ≈225 m at 7.5 km/s, well under the 250 m smoothness budget. */
+/** 30 s along-track grid keeps browser-side SGP4 sampling smooth and bounded. */
 const GRID_STEP_MS = 30_000;
 /** one ground-track vertex per 120 s keeps the line crisp but cheap. */
 const TRACK_STRIDE = 4;
@@ -40,7 +40,15 @@ interface Grid {
 }
 
 function sampleGrid(e: SatelliteEphemeris, t0: number, t1: number): Grid {
-  return sampleSat(e.rec, t0, t1, GRID_STEP_MS, 1_000_000);
+  const grid = sampleSat(e.rec, t0, t1, GRID_STEP_MS, 1_000_000);
+  if (grid.t.at(-1) !== t1) {
+    const endpoint = poseAt(e.rec, t1);
+    if (endpoint) {
+      grid.t.push(t1);
+      grid.pos.push(endpoint.pos);
+    }
+  }
+  return grid;
 }
 
 function fillPosition(g: Grid): SampledPositionProperty {

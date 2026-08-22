@@ -113,13 +113,12 @@ export async function run(): Promise<void> {
   write('manifest.json', manifest);
   write('satellites.json', satellites);
   write('planned.json', planned);
-  // Full past footprints stay on disk (source parity, QGIS); the browser
-  // only needs the centroid dots, so it loads the slim derivative instead.
+  // The browser only needs centroid dots. Do not publish the full historical
+  // footprint archive: it exceeds static-host per-file limits and is unused.
   write(
     'past.points.json',
     past.map((a) => ({ sat: a.satid, startMs: a.startMs, endMs: a.endMs, centroid: a.centroid })),
   );
-  write('past.json', past);
   write('ephemeris.json', ephemeris);
 
   log(`done in ${((Date.now() - startedAt) / 1000).toFixed(1)} s`);

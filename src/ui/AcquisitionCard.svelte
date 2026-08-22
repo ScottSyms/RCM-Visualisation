@@ -2,9 +2,11 @@
   import type { Writable } from 'svelte/store';
   import { fmtUtc } from '../lib/format.ts';
   import type { MissionController } from '../mission/MissionController.ts';
+  import type { CameraMode } from '../mission/types.ts';
 
-  let { selectedAcq, controller }: {
+  let { selectedAcq, mode, controller }: {
     selectedAcq: Writable<string | null>;
+    mode: Writable<CameraMode>;
     controller: MissionController;
   } = $props();
 
@@ -34,6 +36,13 @@
       {/if}
     </div>
     <div class="card-actions">
+      {#if $mode === 'acquisition'}
+        <button class="btn on" onclick={() => controller.exitAcquisitionView()}>Exit view</button>
+      {:else}
+        <button class="btn" onclick={() => void controller.playAcquisition(acq.id)}>
+          Satellite view
+        </button>
+      {/if}
       <button class="btn" onclick={() => controller.flyToAcq(acq.id)}>Fly to</button>
     </div>
   </div>

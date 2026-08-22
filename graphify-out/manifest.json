@@ -19,464 +19,468 @@
     "mtime": 1787099096.2908006,
     "hash": "aa48dad5b0ef2e0a6e143abb397af145"
   },
+  "/Users/scottsyms/code/projects/satellite-animation/tests/camera.test.ts": {
+    "mtime": 1787394461.3942125,
+    "hash": "e9593091b4d2ff1f177a1a12a411f460"
+  },
   "/Users/scottsyms/code/projects/satellite-animation/tests/tle.test.ts": {
     "mtime": 1787090747.0698864,
     "hash": "9eb1ccb156d3a8eb730bc4c9d6ba4fcb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Cesium.js": {
-    "mtime": 1787388488.864516,
+    "mtime": 1787396553.3137708,
     "hash": "d686d5edc8636e266e710cc317506c1b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createGroundPolylineGeometry.js": {
-    "mtime": 1787388488.9425256,
+    "mtime": 1787396553.3645637,
     "hash": "53483b92d891eec9512df6f9db0ae021"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-SSZI3JCE.js": {
-    "mtime": 1787388488.942917,
+    "mtime": 1787396553.364694,
     "hash": "08cf147e8e9dbf339c5545879c61fd9c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-TW2YV7KC.js": {
-    "mtime": 1787388488.9431226,
+    "mtime": 1787396553.3648098,
     "hash": "07d01ce1d74ae239e8452e30d6d3395c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-AEIJDD3C.js": {
-    "mtime": 1787388488.9435112,
+    "mtime": 1787396553.3649368,
     "hash": "e5c69f58024155e9b62877d4ed408e03"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createEllipsoidGeometry.js": {
-    "mtime": 1787388488.943715,
+    "mtime": 1787396553.3650615,
     "hash": "87be5863111835c0e2e191ee1d4aafe5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-PAAWQOJA.js": {
-    "mtime": 1787388488.9439166,
+    "mtime": 1787396553.365181,
     "hash": "3a079bdda63d7ed5a026d448932e41a9"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVerticesFromCesium3DTilesTerrain.js": {
-    "mtime": 1787388488.9441452,
+    "mtime": 1787396553.365309,
     "hash": "4aa42f68dfff0c0b1237eca57d241d57"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-635BMVFD.js": {
-    "mtime": 1787388488.9443822,
+    "mtime": 1787396553.3654404,
     "hash": "e4bccda5389ed3b0abc0f3800f0e3e41"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPlaneGeometry.js": {
-    "mtime": 1787388488.9445896,
+    "mtime": 1787396553.3655708,
     "hash": "9a9515bcf90c22c7b5673a9d94d41a06"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/gaussianSplatSorter.js": {
-    "mtime": 1787388488.9448118,
+    "mtime": 1787396553.3656902,
     "hash": "ba9bdf1966a20c5d438c64635de88cc2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-UXWCPYYV.js": {
-    "mtime": 1787388488.9450796,
+    "mtime": 1787396553.3658783,
     "hash": "f3e15b489d0ceadf9311938eda4d2977"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-BMZ3PJJO.js": {
-    "mtime": 1787388488.9454505,
+    "mtime": 1787396553.3660433,
     "hash": "bffef3408fc9edc70bab00f2004e72ea"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-QVQR4MNN.js": {
-    "mtime": 1787388488.9456718,
+    "mtime": 1787396553.3661773,
     "hash": "628a943285675c89bcec0da82cf35f33"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCorridorGeometry.js": {
-    "mtime": 1787388488.9459133,
+    "mtime": 1787396553.3664646,
     "hash": "cff7b0a040d967157ee3552591942588"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-PQTWLWR6.js": {
-    "mtime": 1787388488.9461424,
+    "mtime": 1787396553.3666425,
     "hash": "6d66123853807f8e28096b674e6b670d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-AMKKUAL3.js": {
-    "mtime": 1787388488.9462721,
+    "mtime": 1787396553.3668103,
     "hash": "a46b2e85b75e1b03d1a0afe59c52be5a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-WORPNHJT.js": {
-    "mtime": 1787388488.9465175,
+    "mtime": 1787396553.3669646,
     "hash": "255430c18dea07e72e47effce8c26fca"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-YPTGYRJK.js": {
-    "mtime": 1787388488.946786,
+    "mtime": 1787396553.3671055,
     "hash": "bd3222662ec1be0a22dc1f40c718c1eb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createTaskProcessorWorker.js": {
-    "mtime": 1787388488.9469357,
+    "mtime": 1787396553.3672483,
     "hash": "8ef4482f8276c0028632cc847031fd34"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-J4SK6SKL.js": {
-    "mtime": 1787388488.9471128,
+    "mtime": 1787396553.367376,
     "hash": "bd11e5b4c5d1adefe6eb086fafe3e08b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-LHAZNKMD.js": {
-    "mtime": 1787388488.94744,
+    "mtime": 1787396553.3675048,
     "hash": "99d16216f24a17cd9ca9a42f71a660b6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-3BERLVP2.js": {
-    "mtime": 1787388488.9475713,
+    "mtime": 1787396553.367631,
     "hash": "b667bd5ccb077a1ebe0b9c926b98d5a3"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-7PSAWR6C.js": {
-    "mtime": 1787388488.9476986,
+    "mtime": 1787396553.3677614,
     "hash": "71b8638fc4687a500baa1358b74504d4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-HD7DLRTB.js": {
-    "mtime": 1787388488.948178,
+    "mtime": 1787396553.3679354,
     "hash": "12e42d49e57551904dcfcbf430060637"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCircleOutlineGeometry.js": {
-    "mtime": 1787388488.9483943,
+    "mtime": 1787396553.3680565,
     "hash": "7aaec5ca0f8f36bf569c32922cd0db67"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-5LV3J43L.js": {
-    "mtime": 1787388488.9499881,
+    "mtime": 1787396553.3681757,
     "hash": "d09c61d771b0bc9ab61f724eb6cdfdd6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-HHFPYI7Q.js": {
-    "mtime": 1787388488.951601,
+    "mtime": 1787396553.368339,
     "hash": "158e3421fff3f98a1ecbfef5c6e60698"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-Y7Z6CVXH.js": {
-    "mtime": 1787388488.9519367,
+    "mtime": 1787396553.3684988,
     "hash": "47cde7b0168dfd8403c5ec986f07021b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-LP5YXEIX.js": {
-    "mtime": 1787388488.9521184,
+    "mtime": 1787396553.3687248,
     "hash": "011b6d329d79b2656f4d0a4f9f01408e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/transcodeKTX2.js": {
-    "mtime": 1787388488.9523652,
+    "mtime": 1787396553.368897,
     "hash": "45ebe7914a7c259005cb55a04c2e4385"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createSphereOutlineGeometry.js": {
-    "mtime": 1787388488.9525492,
+    "mtime": 1787396553.3690314,
     "hash": "56a7a53747302d7b920fa31b98eb98fe"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPolylineVolumeGeometry.js": {
-    "mtime": 1787388488.9529037,
+    "mtime": 1787396553.3691742,
     "hash": "84ce237c58a59bcdaa6040379811fefa"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createEllipseOutlineGeometry.js": {
-    "mtime": 1787388488.9530597,
+    "mtime": 1787396553.3692937,
     "hash": "bdb6c44f3893e5a69711e65b4c89f04b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-IHTR4QEI.js": {
-    "mtime": 1787388488.9531963,
+    "mtime": 1787396553.3694167,
     "hash": "ee992a9084e82b5e19768405734b6c5c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createFrustumGeometry.js": {
-    "mtime": 1787388488.9533532,
+    "mtime": 1787396553.3695414,
     "hash": "bff182af996510c517b4747f90c03f0a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/combineGeometry.js": {
-    "mtime": 1787388488.9536097,
+    "mtime": 1787396553.3696587,
     "hash": "344d8356c27bfbdfeffc23342749f626"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-WNW5RVPR.js": {
-    "mtime": 1787388488.9539878,
+    "mtime": 1787396553.3697822,
     "hash": "87f39a0fcc8d6a9cc658d81f14e4488e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-QCTPEDKH.js": {
-    "mtime": 1787388488.9541276,
+    "mtime": 1787396553.369898,
     "hash": "bda2052c4f8a91d4de40226a978ffa9b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVectorTilePolylines.js": {
-    "mtime": 1787388488.9542785,
+    "mtime": 1787396553.370019,
     "hash": "4ac945f3f952e07352fb5ed941d46311"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-HCBOUAOS.js": {
-    "mtime": 1787388488.9544444,
+    "mtime": 1787396553.3701255,
     "hash": "0774cdddf5fd03c7d84ec269d2de28df"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-OJFO4LOY.js": {
-    "mtime": 1787388488.9547281,
+    "mtime": 1787396553.3702672,
     "hash": "9f905e530b43d20f7755d6662d3924fd"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCorridorOutlineGeometry.js": {
-    "mtime": 1787388488.955093,
+    "mtime": 1787396553.3704145,
     "hash": "d4ac80f3e7257e5cb8f62e5bec19d120"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-VGKISNF5.js": {
-    "mtime": 1787388488.9555342,
+    "mtime": 1787396553.3705354,
     "hash": "cca1097f1878159dd7aa993a69e047cb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/upsampleQuantizedTerrainMesh.js": {
-    "mtime": 1787388488.955829,
+    "mtime": 1787396553.3707047,
     "hash": "6fd4b950575ef09eecec962643b720ba"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-WRFPPFI5.js": {
-    "mtime": 1787388488.955992,
+    "mtime": 1787396553.3708189,
     "hash": "132eeadb376a7bba2c2d6172a395b2ee"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCoplanarPolygonGeometry.js": {
-    "mtime": 1787388488.9563417,
+    "mtime": 1787396553.370958,
     "hash": "f7be1bcecf29e9cf30eb2b1124ee87c5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createFrustumOutlineGeometry.js": {
-    "mtime": 1787388488.9564703,
+    "mtime": 1787396553.3714972,
     "hash": "88006a8c98049b2d47b043d5a3d460ef"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createEllipsoidOutlineGeometry.js": {
-    "mtime": 1787388488.95662,
+    "mtime": 1787396553.3716366,
     "hash": "5ccf4eee244fdfa00502c9fd07d512bb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createWallOutlineGeometry.js": {
-    "mtime": 1787388488.9580376,
+    "mtime": 1787396553.371766,
     "hash": "ec377fc265743923a4a24d844bb01449"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-ZBAXXYBT.js": {
-    "mtime": 1787388488.9581869,
+    "mtime": 1787396553.3719287,
     "hash": "3477cee28de22fe687ef7ab1cd22dec7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createBoxOutlineGeometry.js": {
-    "mtime": 1787388488.9583418,
+    "mtime": 1787396553.3720472,
     "hash": "dd373bf794b32dbf4c926e7ed4ec949c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/decodeI3S.js": {
-    "mtime": 1787388488.9585743,
+    "mtime": 1787396553.3721943,
     "hash": "be07ad4e3226d8fea9267dc22cdb14a9"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPlaneOutlineGeometry.js": {
-    "mtime": 1787388488.9587154,
+    "mtime": 1787396553.372354,
     "hash": "8c1128f8d0760ffa016fc6899c06836c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/decodeGoogleEarthEnterprisePacket.js": {
-    "mtime": 1787388488.9590173,
+    "mtime": 1787396553.3724835,
     "hash": "5e7b81b0f52915f22a3e1f14c0b94788"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-SWCW4GSU.js": {
-    "mtime": 1787388488.9592624,
+    "mtime": 1787396553.3726375,
     "hash": "cfa216a8468b33d095f76966c5013f08"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createWallGeometry.js": {
-    "mtime": 1787388488.9595096,
+    "mtime": 1787396553.3727827,
     "hash": "b3acdc045c7a43c6a209c6ee9d9004cb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-C4K7OQCJ.js": {
-    "mtime": 1787388488.9597836,
+    "mtime": 1787396553.3729496,
     "hash": "50b7376eafa536911b205c5930bc02f7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-UXWCPYYV.v2.js": {
-    "mtime": 1787388488.959994,
+    "mtime": 1787396553.373129,
     "hash": "f3e15b489d0ceadf9311938eda4d2977"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-PTFQE44E.js": {
-    "mtime": 1787388488.960248,
+    "mtime": 1787396553.3732862,
     "hash": "1e187c5cf51b96a7eee02a6b42d15772"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-E2XJEVRT.js": {
-    "mtime": 1787388488.960637,
+    "mtime": 1787396553.3734322,
     "hash": "cbc90dfc4b58f7ff7b2cda708e25c94a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-Q2AGSIFJ.js": {
-    "mtime": 1787388488.9609191,
+    "mtime": 1787396553.3736603,
     "hash": "77d77afc81fac52d2b480e0bae638886"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-ER474XE6.js": {
-    "mtime": 1787388488.9610834,
+    "mtime": 1787396553.3738215,
     "hash": "5cf366e33d9cefaad8ff027cf3b95f87"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-WNRPPZQ5.js": {
-    "mtime": 1787388488.9614346,
+    "mtime": 1787396553.373964,
     "hash": "57ec4f8ef43de654e3a65d3d7e05810f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-RCKN2G6K.js": {
-    "mtime": 1787388488.961597,
+    "mtime": 1787396553.3741117,
     "hash": "4c36e05d2a587338b5967f3e27524f11"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPolygonGeometry.js": {
-    "mtime": 1787388488.961899,
+    "mtime": 1787396553.3742383,
     "hash": "0ce0b529385cdd4bec0942209168ceb1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCylinderOutlineGeometry.js": {
-    "mtime": 1787388488.9620643,
+    "mtime": 1787396553.3743875,
     "hash": "80e47db3213d085da99492e0f324ef6e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-4XQS6KUO.js": {
-    "mtime": 1787388488.9622154,
+    "mtime": 1787396553.3748941,
     "hash": "374d1906112222b78e0b6dc0e8104c2c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-CVUC3Z4F.js": {
-    "mtime": 1787388488.962372,
+    "mtime": 1787396553.375041,
     "hash": "37e46fcdc0f3b49ff14613bfe5b14f0b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createSphereGeometry.js": {
-    "mtime": 1787388488.9625294,
+    "mtime": 1787396553.375186,
     "hash": "9d7f444c4f77a86ca53e2fcc773a50e8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/upsampleVerticesFromCesium3DTilesTerrain.js": {
-    "mtime": 1787388488.9627895,
+    "mtime": 1787396553.3753479,
     "hash": "f55829c5c772a9af909c112062a9529a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-L3KCARNY.js": {
-    "mtime": 1787388488.9630497,
+    "mtime": 1787396553.375592,
     "hash": "d401808517251e974f856f05e569bfca"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-IFUEQIXQ.js": {
-    "mtime": 1787388488.9633071,
+    "mtime": 1787396553.3757467,
     "hash": "9903b4738a43b013c54b3449e08b7247"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-25AFYL5M.js": {
-    "mtime": 1787388488.963656,
+    "mtime": 1787396553.375898,
     "hash": "b888c138a9cb17142279412286222ee0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVectorTileGeometries.js": {
-    "mtime": 1787388488.963892,
+    "mtime": 1787396553.3760498,
     "hash": "c4789b5a4afcdfa035d8a3b1b5070378"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createEllipseGeometry.js": {
-    "mtime": 1787388488.964038,
+    "mtime": 1787396553.3763535,
     "hash": "c628795cc8f42c872b1dc3427486be53"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPolylineGeometry.js": {
-    "mtime": 1787388488.964271,
+    "mtime": 1787396553.3765118,
     "hash": "d34a104ef2cfaff5a8bf50a13ab8bf8e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-VPJRLZMB.js": {
-    "mtime": 1787388488.9644706,
+    "mtime": 1787396553.376687,
     "hash": "a12a0f682495ca44db311f19c096667c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createBoxGeometry.js": {
-    "mtime": 1787388488.9646204,
+    "mtime": 1787396553.3768365,
     "hash": "57a40785d896ede9d6e34dd7cf4e7c0c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVectorTilePoints.js": {
-    "mtime": 1787388488.9647563,
+    "mtime": 1787396553.376994,
     "hash": "eab1edd4892315086a919d816d95f123"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCylinderGeometry.js": {
-    "mtime": 1787388488.9648902,
+    "mtime": 1787396553.3771532,
     "hash": "7bec606f3fbd6d860152b2488a8cb126"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createSimplePolylineGeometry.js": {
-    "mtime": 1787388488.9652407,
+    "mtime": 1787396553.3773105,
     "hash": "cbfacde7dc237529991588e4c2217ce0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-YXV5TEKN.js": {
-    "mtime": 1787388488.965541,
+    "mtime": 1787396553.3775032,
     "hash": "fd510f8e00c38d1fd6d6653664d3ab9d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVerticesFromGoogleEarthEnterpriseBuffer.js": {
-    "mtime": 1787388488.9657898,
+    "mtime": 1787396553.37764,
     "hash": "3beeab5f6c82c4e9c7ef668acf075ee1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-4DLB7LPO.js": {
-    "mtime": 1787388488.9659376,
+    "mtime": 1787396553.3777857,
     "hash": "89acf2ea2f844134abdb762245161263"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/decodeDraco.js": {
-    "mtime": 1787388488.966275,
+    "mtime": 1787396553.3779109,
     "hash": "b232792212055edbcf42359e96d1019f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVectorTilePolygons.js": {
-    "mtime": 1787388488.966651,
+    "mtime": 1787396553.3780425,
     "hash": "634edecf5709000deb8881cfd32020fd"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-3SXIKFFK.js": {
-    "mtime": 1787388488.9668822,
+    "mtime": 1787396553.378204,
     "hash": "81b6572872fb815b10a248d78e3aa3a9"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-LXB5W3RT.js": {
-    "mtime": 1787388488.9670177,
+    "mtime": 1787396553.3783288,
     "hash": "c306e96fa5466b89b654f0ec57ca2db7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/incrementallyBuildTerrainPicker.js": {
-    "mtime": 1787388488.9672503,
+    "mtime": 1787396553.3784776,
     "hash": "96d4d6429cee5e4f0036e90f8d98d2d8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-DDOE447E.js": {
-    "mtime": 1787388488.9674742,
+    "mtime": 1787396553.3786728,
     "hash": "f14503796078a7a9778322f9346fff12"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCoplanarPolygonOutlineGeometry.js": {
-    "mtime": 1787388488.9676743,
+    "mtime": 1787396553.3787985,
     "hash": "6db4a856a082c470f0339cfa59514223"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/gaussianSplatTextureGenerator.js": {
-    "mtime": 1787388488.9679222,
+    "mtime": 1787396553.3789237,
     "hash": "1de05decfa86e066c7355e3264fcc3e2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPolylineVolumeOutlineGeometry.js": {
-    "mtime": 1787388488.9681737,
+    "mtime": 1787396553.3790498,
     "hash": "b4e14bd71f8397d711ce5b64be68223f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createRectangleGeometry.js": {
-    "mtime": 1787388488.9683337,
+    "mtime": 1787396553.379273,
     "hash": "2a07070fa5ee92b88cf025de624e8ffb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createPolygonOutlineGeometry.js": {
-    "mtime": 1787388488.9685779,
+    "mtime": 1787396553.3794065,
     "hash": "1d47da8a3bd24dba7722838fd2f84321"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVerticesFromHeightmap.js": {
-    "mtime": 1787388488.9688404,
+    "mtime": 1787396553.379557,
     "hash": "1d4c1f4f68626ef52a5c99ac5cc90b69"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createCircleGeometry.js": {
-    "mtime": 1787388488.9690707,
+    "mtime": 1787396553.3796768,
     "hash": "affb0f992f874f1526556378f67cb1fc"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVerticesFromQuantizedTerrainMesh.js": {
-    "mtime": 1787388488.969351,
+    "mtime": 1787396553.3797965,
     "hash": "4637c31b9b29e6999d75e4ae473d3ed2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-PZM5FOOW.js": {
-    "mtime": 1787388488.969626,
+    "mtime": 1787396553.3799448,
     "hash": "9a7f80bdb7b0ff28a7391cc244203357"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-SL3G6WV5.js": {
-    "mtime": 1787388488.970005,
+    "mtime": 1787396553.380067,
     "hash": "dc57d58bba46d6bf03d10679a31c9890"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-WF6KNLYB.js": {
-    "mtime": 1787388488.970212,
+    "mtime": 1787396553.3803453,
     "hash": "7af540745692b6e2695ac1152496b4c0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-XBXKBB6E.js": {
-    "mtime": 1787388488.970419,
+    "mtime": 1787396553.3804917,
     "hash": "13ed1c8703fdc1260e56a398c4fbd083"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-SKULY4SM.js": {
-    "mtime": 1787388488.9705877,
+    "mtime": 1787396553.380623,
     "hash": "6845b34c4179bacb44af4edc8fcb3d96"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-OX6OW7LH.js": {
-    "mtime": 1787388488.9708474,
+    "mtime": 1787396553.380791,
     "hash": "ce5ebb51cbb5d61c684db9147b2a0490"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createGeometry.js": {
-    "mtime": 1787388488.971213,
+    "mtime": 1787396553.3809407,
     "hash": "ce5bb03990eef17faa9e3b8b3602ba14"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-LFBA5RLZ.js": {
-    "mtime": 1787388488.9715083,
+    "mtime": 1787396553.3811762,
     "hash": "b40ec3052b0721ade67d4165af70a2d0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-3MNKUQ6L.js": {
-    "mtime": 1787388488.971735,
+    "mtime": 1787396553.3814409,
     "hash": "30b8240074589a128d303a1fd694a343"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createRectangleOutlineGeometry.js": {
-    "mtime": 1787388488.9719918,
+    "mtime": 1787396553.3815815,
     "hash": "d3d6117a255ef7535dd344ab71d58b97"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/transferTypedArrayTest.js": {
-    "mtime": 1787388488.9722588,
+    "mtime": 1787396553.3817089,
     "hash": "b46d910b0cb80cb765a61105290f69fa"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/chunk-SXFPISI4.js": {
-    "mtime": 1787388488.972637,
+    "mtime": 1787396553.381843,
     "hash": "42eedee5373fed67f47323ef6079a899"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Workers/createVectorTileClampedPolylines.js": {
-    "mtime": 1787388488.9728804,
+    "mtime": 1787396553.3820229,
     "hash": "b62cdb2692ddca65db570e27a339cf12"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/ThirdParty/google-earth-dbroot-parser.js": {
-    "mtime": 1787388488.9232426,
+    "mtime": 1787396553.353131,
     "hash": "5fbfc329059e2027f24f33657aae9e8e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/ThirdParty/Workers/zip-web-worker.js": {
-    "mtime": 1787388488.9225817,
+    "mtime": 1787396553.3528047,
     "hash": "57a3766bf0e542a81d9e0f42802a80c6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/scripts/sync-cesium.mjs": {
@@ -484,12 +488,12 @@
     "hash": "678122ef6b6f3d6e5f11db7f1d73a323"
   },
   "/Users/scottsyms/code/projects/satellite-animation/scripts/data/run.mjs": {
-    "mtime": 1787107000.647487,
-    "hash": "613b26570c4ee8e40f389f248e319f3f"
+    "mtime": 1787396459.7899852,
+    "hash": "80b9230fc1d25aba3efcac9cf0329583"
   },
   "/Users/scottsyms/code/projects/satellite-animation/scripts/data/pipeline.ts": {
-    "mtime": 1787210764.4404197,
-    "hash": "fb5747a14e81dd564ae79586bde2389a"
+    "mtime": 1787396459.7906368,
+    "hash": "b001203d56affcb45ac50d2e762a743e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/scripts/data/model.ts": {
     "mtime": 1787176193.3484044,
@@ -524,8 +528,8 @@
     "hash": "b287fbf9021eeed1e88b68579031798b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/ui/AcquisitionCard.svelte": {
-    "mtime": 1787159924.512401,
-    "hash": "81ffbd7cf807538b37a23aad6b459822"
+    "mtime": 1787394615.2551847,
+    "hash": "f602f45ec1ae2506e389aa612ecaf6de"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/ui/SatelliteCard.svelte": {
     "mtime": 1787160001.1518302,
@@ -540,8 +544,8 @@
     "hash": "9cd8e9dd78926e172fb98f6d73e9758e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/app/App.svelte": {
-    "mtime": 1787161394.952188,
-    "hash": "40f58d929bdc18f2d77c49a308910779"
+    "mtime": 1787394809.4187195,
+    "hash": "0fdd835cd61d728f87860aa87dd8184a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/typings/cesium-global.d.ts": {
     "mtime": 1787137044.8847208,
@@ -552,16 +556,16 @@
     "hash": "a6912ea23144e1ca515c77ba10d3e141"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/mission/MissionController.ts": {
-    "mtime": 1787388522.2588212,
-    "hash": "4495bc6de3d140388af6942043a2fcc8"
+    "mtime": 1787394840.6441047,
+    "hash": "61baafbce86314cc34f9c09d8047e48f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/mission/types.ts": {
     "mtime": 1787138088.2045245,
     "hash": "e3245c0e447306d7e7148192ab94624f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/ephemeris/SatelliteEntity.ts": {
-    "mtime": 1787388472.6004133,
-    "hash": "fbace21f26b43c15e7571ec29ecde93e"
+    "mtime": 1787394974.3393884,
+    "hash": "78ed360e03f82bf4b6d888285f699160"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/ephemeris/EphemerisLoader.ts": {
     "mtime": 1787140912.0137959,
@@ -592,12 +596,16 @@
     "hash": "05f328327fe11867f37914498ef78b8b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/cesium/CameraController.ts": {
-    "mtime": 1787152239.2496588,
-    "hash": "a60cb17f9b128563b6ddd32eece98518"
+    "mtime": 1787394630.5769672,
+    "hash": "51790f0bcc57536ae5fbb9f7474f721d"
+  },
+  "/Users/scottsyms/code/projects/satellite-animation/src/cesium/camera-geometry.ts": {
+    "mtime": 1787394453.0968635,
+    "hash": "5f80ca0e1a19fc4728a2358cf92ba7c8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/cesium/AcquisitionRenderer.ts": {
-    "mtime": 1787388472.59869,
-    "hash": "1eed51a852e7620992e8543b52f40bfe"
+    "mtime": 1787394531.625324,
+    "hash": "5268b7148d22bc9683a53ca32bbfef03"
   },
   "/Users/scottsyms/code/projects/satellite-animation/src/cesium/ViewerFactory.ts": {
     "mtime": 1787388472.6007526,
@@ -628,855 +636,855 @@
     "hash": "0e096747a247a44d9dba10fc66d19304"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/waterNormalsSmall.jpg": {
-    "mtime": 1787388488.9075487,
+    "mtime": 1787396553.3439627,
     "hash": "4fff67aa927fc4ecb16298f61b0cf84a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/pin.svg": {
-    "mtime": 1787388488.907686,
+    "mtime": 1787396553.3440955,
     "hash": "d14ccd8a91cb49eec0f1377f7f1feac5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/moonSmall.jpg": {
-    "mtime": 1787388488.907969,
+    "mtime": 1787396553.3442714,
     "hash": "b592e228bf0641d6b4f0b79e664177ab"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/waterNormals.jpg": {
-    "mtime": 1787388488.9083507,
+    "mtime": 1787396553.3444781,
     "hash": "a568290decdaed32b703435a9fd7bfa4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/0/0/0.jpg": {
-    "mtime": 1787388488.86586,
+    "mtime": 1787396553.3155162,
     "hash": "990a7a0072ab8dbee8d06651890522f6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/0/1/0.jpg": {
-    "mtime": 1787388488.86624,
+    "mtime": 1787396553.3158233,
     "hash": "f6641a884d25e9c6da0c37ccb1b1d64c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/0/1.jpg": {
-    "mtime": 1787388488.8666782,
+    "mtime": 1787396553.31613,
     "hash": "3edeb0e2a3fda6106aff6a286803fc72"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/0/0.jpg": {
-    "mtime": 1787388488.8670099,
+    "mtime": 1787396553.316299,
     "hash": "35a45eb015b4111462b8102ee1a6939a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/1/1.jpg": {
-    "mtime": 1787388488.8675501,
+    "mtime": 1787396553.3165867,
     "hash": "0334ef0b51c2e091c73949f7c2b2f5a2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/1/0.jpg": {
-    "mtime": 1787388488.867878,
+    "mtime": 1787396553.316733,
     "hash": "d589544a710969aac6b551f8f7973729"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/3/1.jpg": {
-    "mtime": 1787388488.8682427,
+    "mtime": 1787396553.3170068,
     "hash": "072bd75fdece2266ff53e8d7da5b5d98"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/3/0.jpg": {
-    "mtime": 1787388488.868489,
+    "mtime": 1787396553.3171735,
     "hash": "39bb105615e4f3f3698718f3a4e0fca2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/2/1.jpg": {
-    "mtime": 1787388488.8689058,
+    "mtime": 1787396553.3174706,
     "hash": "1dd9caa7da43d557075acce53a5c0700"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/1/2/0.jpg": {
-    "mtime": 1787388488.8691983,
+    "mtime": 1787396553.3176525,
     "hash": "1789af5ba68ef0257a7bc27af789b51c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/0/2.jpg": {
-    "mtime": 1787388488.8701124,
+    "mtime": 1787396553.3181224,
     "hash": "8daa3a447adcaa8dc30d530230926946"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/0/3.jpg": {
-    "mtime": 1787388488.8704185,
+    "mtime": 1787396553.318307,
     "hash": "0087354787091639117341111266cccd"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/0/1.jpg": {
-    "mtime": 1787388488.8706756,
+    "mtime": 1787396553.3184912,
     "hash": "9a2acc513dac3858168fabe94e66b0f0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/0/0.jpg": {
-    "mtime": 1787388488.8710086,
+    "mtime": 1787396553.3186886,
     "hash": "422e235c786163b90848afe20614ca0c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/7/2.jpg": {
-    "mtime": 1787388488.8723476,
+    "mtime": 1787396553.3189607,
     "hash": "218a9bbad9f7a4a79937d4f795b8a23b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/7/3.jpg": {
-    "mtime": 1787388488.8726103,
+    "mtime": 1787396553.3191283,
     "hash": "1a9bad9bfd0d88865e2040fdf3fc0bb5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/7/1.jpg": {
-    "mtime": 1787388488.8728926,
+    "mtime": 1787396553.3193634,
     "hash": "19040fc220d160409cf443069575bf10"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/7/0.jpg": {
-    "mtime": 1787388488.8731213,
+    "mtime": 1787396553.3195696,
     "hash": "ad1eec42ca1e94941c49e85aa52aa32a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/6/2.jpg": {
-    "mtime": 1787388488.873485,
+    "mtime": 1787396553.3199284,
     "hash": "95e60b5180b46c03c20aa80a6b4e0ed2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/6/3.jpg": {
-    "mtime": 1787388488.8738303,
+    "mtime": 1787396553.3202083,
     "hash": "c578d1791bf60928b05d1be4d61c90ff"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/6/1.jpg": {
-    "mtime": 1787388488.8740842,
+    "mtime": 1787396553.3204155,
     "hash": "f7e8295dada9bd406f176f978febbb81"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/6/0.jpg": {
-    "mtime": 1787388488.8743474,
+    "mtime": 1787396553.320575,
     "hash": "1b0dfd0f865366b1f83b707d2b72160c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/1/2.jpg": {
-    "mtime": 1787388488.874737,
+    "mtime": 1787396553.3208768,
     "hash": "c14b165444e972d83e8da091f86a6507"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/1/3.jpg": {
-    "mtime": 1787388488.8749943,
+    "mtime": 1787396553.3211365,
     "hash": "051254d96756e93b6c019c80cf6b86f3"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/1/1.jpg": {
-    "mtime": 1787388488.8753293,
+    "mtime": 1787396553.32128,
     "hash": "61a0729b15dc52460753b7ab76b55fcf"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/1/0.jpg": {
-    "mtime": 1787388488.8756833,
+    "mtime": 1787396553.3214035,
     "hash": "0b41a43a43d7979efcae73ed9e076db4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/4/2.jpg": {
-    "mtime": 1787388488.876238,
+    "mtime": 1787396553.3216314,
     "hash": "b0b02790e08f54391cdb556e09c7a25d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/4/3.jpg": {
-    "mtime": 1787388488.876523,
+    "mtime": 1787396553.3217854,
     "hash": "fa45b7c61718afd78f5edc69d988f74c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/4/1.jpg": {
-    "mtime": 1787388488.8767402,
+    "mtime": 1787396553.3219733,
     "hash": "5d1b7325bd11d72b5297442cfab5b154"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/4/0.jpg": {
-    "mtime": 1787388488.8770585,
+    "mtime": 1787396553.3221128,
     "hash": "17db9999d78c208cff7d3dc304b5087f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/3/2.jpg": {
-    "mtime": 1787388488.8774405,
+    "mtime": 1787396553.322335,
     "hash": "e95f18ab59f4a69cfadfa13a53110a41"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/3/3.jpg": {
-    "mtime": 1787388488.8777504,
+    "mtime": 1787396553.3224967,
     "hash": "de4b12ea8bc39227125a2247aebdf566"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/3/1.jpg": {
-    "mtime": 1787388488.8780487,
+    "mtime": 1787396553.3226647,
     "hash": "9a107bfce77a5b0c9a7d1453c89df9a0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/3/0.jpg": {
-    "mtime": 1787388488.8782551,
+    "mtime": 1787396553.3228061,
     "hash": "94bbc8a56359dc7544f6238b36d3b090"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/2/2.jpg": {
-    "mtime": 1787388488.8785725,
+    "mtime": 1787396553.3230367,
     "hash": "62322d0824d43a2633c14201cb1f3eea"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/2/3.jpg": {
-    "mtime": 1787388488.8788834,
+    "mtime": 1787396553.323252,
     "hash": "f00c758f4d78871fa199cdbbfc0da2a1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/2/1.jpg": {
-    "mtime": 1787388488.8791728,
+    "mtime": 1787396553.3234713,
     "hash": "c29ce65258c4493abb11d10fe26afd71"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/2/0.jpg": {
-    "mtime": 1787388488.8794432,
+    "mtime": 1787396553.3236096,
     "hash": "8a399b5863644da05b61f2387531edea"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/5/2.jpg": {
-    "mtime": 1787388488.8797677,
+    "mtime": 1787396553.323883,
     "hash": "a728cda7051d19428dc7fb1ebd04da59"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/5/3.jpg": {
-    "mtime": 1787388488.8800178,
+    "mtime": 1787396553.3240552,
     "hash": "5f08a87bf9e8b1939b51808835c9ceeb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/5/1.jpg": {
-    "mtime": 1787388488.8802679,
+    "mtime": 1787396553.324231,
     "hash": "50aa0cc1df78481f2b1b911d5d736bc4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/NaturalEarthII/2/5/0.jpg": {
-    "mtime": 1787388488.8806322,
+    "mtime": 1787396553.324383,
     "hash": "b1b4428ce18576a04bb43ddd5645d79b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rail-light.png": {
-    "mtime": 1787388488.8809993,
+    "mtime": 1787396553.3247724,
     "hash": "6894d9bf5c8901c467e1126e005bd69c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/religious-jewish.png": {
-    "mtime": 1787388488.8812482,
+    "mtime": 1787396553.3249156,
     "hash": "ffc28a3c545ce7334223b1a3f93c7dfc"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/art-gallery.png": {
-    "mtime": 1787388488.8814964,
+    "mtime": 1787396553.325065,
     "hash": "77c895e3d42ee93fad9c797936fb2a7a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/hospital.png": {
-    "mtime": 1787388488.8817663,
+    "mtime": 1787396553.3251948,
     "hash": "ab0425879e370427a9fdb39b06283e64"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/dam.png": {
-    "mtime": 1787388488.88201,
+    "mtime": 1787396553.3253121,
     "hash": "eb3a524fc4b61185dbe567e0e9f0e396"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/oil-well.png": {
-    "mtime": 1787388488.8822536,
+    "mtime": 1787396553.325441,
     "hash": "2b9a8961a5c87bde453d288966730211"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/industrial.png": {
-    "mtime": 1787388488.8824964,
+    "mtime": 1787396553.3255663,
     "hash": "a0ad127a50cb2ef235c45dcf11396805"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cesium.png": {
-    "mtime": 1787388488.8827298,
+    "mtime": 1787396553.3257031,
     "hash": "47cfb11a8750025d867abb8e71cbc496"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/marker-stroked.png": {
-    "mtime": 1787388488.8829637,
+    "mtime": 1787396553.3258584,
     "hash": "d664120948e7b8afe8942e501e280ff8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cinema.png": {
-    "mtime": 1787388488.8831923,
+    "mtime": 1787396553.3259873,
     "hash": "c379f679098fc0b378bb56a973d4c182"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/religious-christian.png": {
-    "mtime": 1787388488.883437,
+    "mtime": 1787396553.3261142,
     "hash": "e1fcbc56a7ba7361446cbb0d573644e6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/school.png": {
-    "mtime": 1787388488.884011,
+    "mtime": 1787396553.3262415,
     "hash": "8c2fee32f8d9f6b6da4a99e586413b5d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/land-use.png": {
-    "mtime": 1787388488.884684,
+    "mtime": 1787396553.3263907,
     "hash": "0b0277611fa84a03289e4d03169cd552"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/park.png": {
-    "mtime": 1787388488.884948,
+    "mtime": 1787396553.3265448,
     "hash": "44c03b0bd66a7b20463c9bc5094e04e8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/theatre.png": {
-    "mtime": 1787388488.8851936,
+    "mtime": 1787396553.3268743,
     "hash": "0d154e9a55cc7106024bb5727e8612ec"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/town.png": {
-    "mtime": 1787388488.8854337,
+    "mtime": 1787396553.3270361,
     "hash": "97c795ace8a71091cfa7faf23e9dce42"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/ferry.png": {
-    "mtime": 1787388488.8856878,
+    "mtime": 1787396553.3271866,
     "hash": "90245d77cd495e7f55124e0fbfa0f7f7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/farm.png": {
-    "mtime": 1787388488.8859532,
+    "mtime": 1787396553.3273218,
     "hash": "60d41ce78734dbb42fa794abe8871c2d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cafe.png": {
-    "mtime": 1787388488.8860939,
+    "mtime": 1787396553.3276188,
     "hash": "528f7a332c39686719699fa213a7cf2d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/post.png": {
-    "mtime": 1787388488.8863392,
+    "mtime": 1787396553.3277867,
     "hash": "05f3e10db2a80acde27af0c0635e5552"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/dog-park.png": {
-    "mtime": 1787388488.8865056,
+    "mtime": 1787396553.32796,
     "hash": "2d85a4177aa9e68a8e0e64e8daff4007"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/city.png": {
-    "mtime": 1787388488.8866544,
+    "mtime": 1787396553.328096,
     "hash": "57aeaa294b62d4b71f20fb7634d6faba"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/lighthouse.png": {
-    "mtime": 1787388488.8869367,
+    "mtime": 1787396553.3282435,
     "hash": "f4a8e7900059e0db1faa951a82bfb719"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/town-hall.png": {
-    "mtime": 1787388488.8872132,
+    "mtime": 1787396553.3283849,
     "hash": "4c6328411e48056360ba53617a181da4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cricket.png": {
-    "mtime": 1787388488.8873641,
+    "mtime": 1787396553.3285246,
     "hash": "b6f9d6b208f331fc5d9cf173f5d2172f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/religious-muslim.png": {
-    "mtime": 1787388488.887627,
+    "mtime": 1787396553.330603,
     "hash": "cf23d349f8759255e8de5dc159d995bb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/fuel.png": {
-    "mtime": 1787388488.8877807,
+    "mtime": 1787396553.3307347,
     "hash": "abfa6401d5f21521bbe6ab4b5c1803f9"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/skiing.png": {
-    "mtime": 1787388488.8895648,
+    "mtime": 1787396553.3308508,
     "hash": "4c9fbaa4e6145065e090951c9c452c0e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/alcohol-shop.png": {
-    "mtime": 1787388488.891159,
+    "mtime": 1787396553.3309765,
     "hash": "bc388d2cad50ea1dfb918f83734a6f00"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/bakery.png": {
-    "mtime": 1787388488.8914168,
+    "mtime": 1787396553.331104,
     "hash": "2199b38d89cc3f3482296d527757c073"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/waste-basket.png": {
-    "mtime": 1787388488.8916686,
+    "mtime": 1787396553.3312476,
     "hash": "5a65f3c59d371bf1ea27c622d19d3006"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/embassy.png": {
-    "mtime": 1787388488.891813,
+    "mtime": 1787396553.3313806,
     "hash": "d2a6fa0cb22f0b2546a63bffc5596d87"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/music.png": {
-    "mtime": 1787388488.8920407,
+    "mtime": 1787396553.331494,
     "hash": "1efcfe774f70f846083d3dc2a412261f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/library.png": {
-    "mtime": 1787388488.8922915,
+    "mtime": 1787396553.3317509,
     "hash": "59f02e16bda042a64f0de5b7f1347174"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/shop.png": {
-    "mtime": 1787388488.892567,
+    "mtime": 1787396553.33188,
     "hash": "465a7cdd23f94fb8f6e3f59873041355"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/circle.png": {
-    "mtime": 1787388488.8927498,
+    "mtime": 1787396553.3319933,
     "hash": "298117b9c60e00e88fc85f15b0f206eb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/restaurant.png": {
-    "mtime": 1787388488.8929946,
+    "mtime": 1787396553.3321261,
     "hash": "48134ebcd9204c7b8ae4d14a96214a65"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/beer.png": {
-    "mtime": 1787388488.8932707,
+    "mtime": 1787396553.3322663,
     "hash": "04b870d408ef5d978f6bf94eba5f2cd1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/parking-garage.png": {
-    "mtime": 1787388488.893416,
+    "mtime": 1787396553.3324018,
     "hash": "6845dcabeba61d7c2ae60c4ac655253b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/entrance.png": {
-    "mtime": 1787388488.8936539,
+    "mtime": 1787396553.332657,
     "hash": "a1f53676680e31bbc2be40c2f6b798c3"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/tennis.png": {
-    "mtime": 1787388488.8938115,
+    "mtime": 1787396553.332846,
     "hash": "dccf07a314d929b4e9b7afc7851b39d0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/clothing-store.png": {
-    "mtime": 1787388488.8940623,
+    "mtime": 1787396553.3329966,
     "hash": "67e18c5f21ed000094ed02ea29fbcef6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/minefield.png": {
-    "mtime": 1787388488.8942082,
+    "mtime": 1787396553.3331394,
     "hash": "e3b616be7bfd0306c6665d26fee10acb"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/triangle.png": {
-    "mtime": 1787388488.894349,
+    "mtime": 1787396553.3332841,
     "hash": "07227874aaa630c99050d0712f854c71"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/soccer.png": {
-    "mtime": 1787388488.8945022,
+    "mtime": 1787396553.333591,
     "hash": "7ea06729e9a58537d8f219cef8487295"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/heart.png": {
-    "mtime": 1787388488.8946507,
+    "mtime": 1787396553.3337984,
     "hash": "a055a74043a67bae9c0a3d434d1978e0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/hairdresser.png": {
-    "mtime": 1787388488.8948023,
+    "mtime": 1787396553.3339512,
     "hash": "c47447370dbf0700be4a2278bd8f8daf"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/garden.png": {
-    "mtime": 1787388488.8950217,
+    "mtime": 1787396553.3340807,
     "hash": "edf1fdfc9e724b7d9c4d5a55bf6d1952"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/commercial.png": {
-    "mtime": 1787388488.8952632,
+    "mtime": 1787396553.3342435,
     "hash": "aae97e5fbf7d11c13b199d7512fdb270"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rail-above.png": {
-    "mtime": 1787388488.8954265,
+    "mtime": 1787396553.334369,
     "hash": "35b63868cc421d84f5c8184f36143b67"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/heliport.png": {
-    "mtime": 1787388488.8955753,
+    "mtime": 1787396553.3344843,
     "hash": "4b2bf6dd1a76652f2e8a6405f59ed327"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/building.png": {
-    "mtime": 1787388488.8958359,
+    "mtime": 1787396553.3348114,
     "hash": "c45ea5540f44cdee9aa98ce3dfeed061"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/fast-food.png": {
-    "mtime": 1787388488.896115,
+    "mtime": 1787396553.3349836,
     "hash": "c1be76479a6ef72de36f23959c2abb95"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/parking.png": {
-    "mtime": 1787388488.8962562,
+    "mtime": 1787396553.3351212,
     "hash": "1af8adbca28c206cb9aca76fdac98790"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/chemist.png": {
-    "mtime": 1787388488.8964057,
+    "mtime": 1787396553.3353002,
     "hash": "f9fa8017cf6049e08932a7265a8ccd65"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/ice-cream.png": {
-    "mtime": 1787388488.8965378,
+    "mtime": 1787396553.3354776,
     "hash": "d33480f2ded9edb708e639342191af0c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/college.png": {
-    "mtime": 1787388488.8967044,
+    "mtime": 1787396553.3356125,
     "hash": "d8d62a95494e114fb31bb56929edf15c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/wetland.png": {
-    "mtime": 1787388488.8968399,
+    "mtime": 1787396553.3357623,
     "hash": "643a8555b58c2e339f7616a6ca0396c2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/laundry.png": {
-    "mtime": 1787388488.896995,
+    "mtime": 1787396553.3359146,
     "hash": "ab912fe0d7969f74c76bff66d926c2a7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/grocery.png": {
-    "mtime": 1787388488.8972485,
+    "mtime": 1787396553.3360333,
     "hash": "9c2688aac9434ee0d3fa14f817f0cd75"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/swimming.png": {
-    "mtime": 1787388488.8973968,
+    "mtime": 1787396553.3363287,
     "hash": "5eb8e9c9e430c78bda4606ff5097b179"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/airport.png": {
-    "mtime": 1787388488.897635,
+    "mtime": 1787396553.3364701,
     "hash": "dfcae5e33b28281ce2d720e781576c0e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rocket.png": {
-    "mtime": 1787388488.8979049,
+    "mtime": 1787396553.3365867,
     "hash": "ca32799d520401b56d67fa2ad2c40f88"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/suitcase.png": {
-    "mtime": 1787388488.8981233,
+    "mtime": 1787396553.3367116,
     "hash": "fb6799f4eeffc16ecc2c6e419d4790b0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/zoo.png": {
-    "mtime": 1787388488.898287,
+    "mtime": 1787396553.3368268,
     "hash": "a42e3f9c41c7881cd06a2e89d55e952d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/prison.png": {
-    "mtime": 1787388488.8985116,
+    "mtime": 1787396553.3369427,
     "hash": "d4fc50555258dfbf9ba99b247e4cf015"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/playground.png": {
-    "mtime": 1787388488.898724,
+    "mtime": 1787396553.337081,
     "hash": "2bb54ea639f97c71b104492798a5bcd6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rail-underground.png": {
-    "mtime": 1787388488.8988729,
+    "mtime": 1787396553.3371983,
     "hash": "0fe44c50d76892cef32bc91d82d69f76"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cross.png": {
-    "mtime": 1787388488.8990703,
+    "mtime": 1787396553.3373091,
     "hash": "61b70f59bf0835358211395173e4a8f1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/water.png": {
-    "mtime": 1787388488.8992243,
+    "mtime": 1787396553.3374298,
     "hash": "7152b3a8436f2fd976b9a8a96cb29c82"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/america-football.png": {
-    "mtime": 1787388488.8994577,
+    "mtime": 1787396553.3375583,
     "hash": "f26c4f50cde42a2206efc9d0b9f9fff6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/car.png": {
-    "mtime": 1787388488.8996937,
+    "mtime": 1787396553.337682,
     "hash": "98b551c1d3957778b3e47a3ec4aa1c23"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/polling-place.png": {
-    "mtime": 1787388488.899837,
+    "mtime": 1787396553.3378003,
     "hash": "98d50f6a80d89be46aaec8026d087638"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/gift.png": {
-    "mtime": 1787388488.9000602,
+    "mtime": 1787396553.3379254,
     "hash": "4a3a28082b86de222b54834d9e09fe01"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/baseball.png": {
-    "mtime": 1787388488.9003,
+    "mtime": 1787396553.3380535,
     "hash": "0718a4543bd578f88aaa753e04986a75"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/lodging.png": {
-    "mtime": 1787388488.900452,
+    "mtime": 1787396553.338194,
     "hash": "ac9c4aa13c955f7a848c8bf4135f4dbc"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/toilets.png": {
-    "mtime": 1787388488.900605,
+    "mtime": 1787396553.3383296,
     "hash": "42011f7244bc77d2705251aa50729e81"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/london-underground.png": {
-    "mtime": 1787388488.9007797,
+    "mtime": 1787396553.3384604,
     "hash": "0dd9c6f4d590364df7199ee3776d1e86"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/basketball.png": {
-    "mtime": 1787388488.9011128,
+    "mtime": 1787396553.3385835,
     "hash": "b0d77aa13883ebf79c00835a8fcde7cd"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/bank.png": {
-    "mtime": 1787388488.9013302,
+    "mtime": 1787396553.3386915,
     "hash": "a9e7dc3a255c53c04cde82df2ced4465"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/warehouse.png": {
-    "mtime": 1787388488.9014852,
+    "mtime": 1787396553.3388147,
     "hash": "7628229d0449daf987eabc5e5be58a33"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/village.png": {
-    "mtime": 1787388488.9016306,
+    "mtime": 1787396553.3389356,
     "hash": "97309b4ae89eff7d018e16164462b915"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/park2.png": {
-    "mtime": 1787388488.901766,
+    "mtime": 1787396553.339064,
     "hash": "b70fa7f3f76ae2adf1150c41bb2f4e30"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/bicycle.png": {
-    "mtime": 1787388488.9018936,
+    "mtime": 1787396553.3393674,
     "hash": "bd2756ebb37e4bae3c23654e5b4ac386"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/square-stroked.png": {
-    "mtime": 1787388488.9020271,
+    "mtime": 1787396553.339516,
     "hash": "6da48a117eb87d033863579f1aaf98c7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/triangle-stroked.png": {
-    "mtime": 1787388488.9021907,
+    "mtime": 1787396553.3396337,
     "hash": "9fe9a9a6252bcb030d306b2e04f91bbf"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/pharmacy.png": {
-    "mtime": 1787388488.9023383,
+    "mtime": 1787396553.339776,
     "hash": "190d8980a5f005bfc7929f9e023153e5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/place-of-worship.png": {
-    "mtime": 1787388488.902478,
+    "mtime": 1787396553.3399208,
     "hash": "7f2c902ef726d39eab3cf1333d01142d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/disability.png": {
-    "mtime": 1787388488.902641,
+    "mtime": 1787396553.3400455,
     "hash": "e7719c5ac2d71720f99389f02b0f5fe4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/airfield.png": {
-    "mtime": 1787388488.9028723,
+    "mtime": 1787396553.3401883,
     "hash": "023d4029c19da5b7fa9a91424ca49983"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/danger.png": {
-    "mtime": 1787388488.903025,
+    "mtime": 1787396553.3403192,
     "hash": "1987eee554be67e2479c5b88f5cbaba3"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/star.png": {
-    "mtime": 1787388488.9031672,
+    "mtime": 1787396553.3404405,
     "hash": "0b53ad35956d11aa130051cc7ec8241d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/telephone.png": {
-    "mtime": 1787388488.9033043,
+    "mtime": 1787396553.3405633,
     "hash": "f5462ed51db6ebcdb44a3f7393b76f0d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/roadblock.png": {
-    "mtime": 1787388488.903446,
+    "mtime": 1787396553.3406904,
     "hash": "7c85602da62e79f160d69ea790f8457f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/circle-stroked.png": {
-    "mtime": 1787388488.9035978,
+    "mtime": 1787396553.3408132,
     "hash": "c905d169c8be14e916aa76237501d5ab"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/museum.png": {
-    "mtime": 1787388488.9037263,
+    "mtime": 1787396553.3409307,
     "hash": "aa8a84ad399b65e0cadbb7545fef2a4c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/bus.png": {
-    "mtime": 1787388488.903857,
+    "mtime": 1787396553.341066,
     "hash": "684d36a29c22f51d6070b15c7548209a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/camera.png": {
-    "mtime": 1787388488.9040284,
+    "mtime": 1787396553.3411949,
     "hash": "241b336424f3d5a8ca0434a31a610709"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/emergency-telephone.png": {
-    "mtime": 1787388488.904204,
+    "mtime": 1787396553.3413217,
     "hash": "f454d9115fd5f8eb93564a2adbe57522"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/golf.png": {
-    "mtime": 1787388488.9043782,
+    "mtime": 1787396553.3414419,
     "hash": "6820757ed834211ed7225884430b44aa"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/scooter.png": {
-    "mtime": 1787388488.9045417,
+    "mtime": 1787396553.3415673,
     "hash": "f7fe9deef2979ecd24a5e341a1fe8559"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/slaughterhouse.png": {
-    "mtime": 1787388488.9047117,
+    "mtime": 1787396553.3416998,
     "hash": "04d831ed3003b7cca0f1bc54efabde4e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/bar.png": {
-    "mtime": 1787388488.9048722,
+    "mtime": 1787396553.3418283,
     "hash": "b44852eaacfe38ded9a9b4787fe46252"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rail.png": {
-    "mtime": 1787388488.9050207,
+    "mtime": 1787396553.3419533,
     "hash": "45770d7f93ca1c96aa8080c205d276b8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/cemetery.png": {
-    "mtime": 1787388488.9051824,
+    "mtime": 1787396553.3420858,
     "hash": "0c421ab1f691e06ec4c61c8e45eba3b7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/square.png": {
-    "mtime": 1787388488.9054081,
+    "mtime": 1787396553.3422012,
     "hash": "0c5fcc6b0f13740ffd9729e8d40822a0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/police.png": {
-    "mtime": 1787388488.9055796,
+    "mtime": 1787396553.3423347,
     "hash": "a89b7cc5437b61133a009cb602708dc1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/rail-metro.png": {
-    "mtime": 1787388488.9057438,
+    "mtime": 1787396553.342475,
     "hash": "bafcb077b592cdd2efaec74f3af63ec0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/star-stroked.png": {
-    "mtime": 1787388488.9059117,
+    "mtime": 1787396553.342605,
     "hash": "24329435513772e44aae3a1c8e696834"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/logging.png": {
-    "mtime": 1787388488.9060817,
+    "mtime": 1787396553.3427448,
     "hash": "6c97763f0196e4a8a03f04e95a1196f1"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/pitch.png": {
-    "mtime": 1787388488.9062607,
+    "mtime": 1787396553.3428679,
     "hash": "9ed1cad734796a416fdbb635da640aa6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/campsite.png": {
-    "mtime": 1787388488.906417,
+    "mtime": 1787396553.3429842,
     "hash": "89ca7b2976b1bc10632eb70cc1f9447a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/harbor.png": {
-    "mtime": 1787388488.9065738,
+    "mtime": 1787396553.343114,
     "hash": "1db91c462c6d9dd81970759d3d215e3c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/marker.png": {
-    "mtime": 1787388488.9067333,
+    "mtime": 1787396553.3432486,
     "hash": "23be8d5d0a51d0e1f117047a7c8b2ae4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/mobilephone.png": {
-    "mtime": 1787388488.9069078,
+    "mtime": 1787396553.343509,
     "hash": "888f345613c6b25b035391dc82880b47"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/fire-station.png": {
-    "mtime": 1787388488.9070704,
+    "mtime": 1787396553.3436463,
     "hash": "a551189c79181157aa068a3cf4773637"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/maki/monument.png": {
-    "mtime": 1787388488.9072108,
+    "mtime": 1787396553.3437765,
     "hash": "b94ce950a73d163d143880d9799b6ba6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_mz.jpg": {
-    "mtime": 1787388488.9087412,
+    "mtime": 1787396553.3447118,
     "hash": "ce3752c9dd3b7c390190fb5f104bddd4"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_my.jpg": {
-    "mtime": 1787388488.9090266,
+    "mtime": 1787396553.3448777,
     "hash": "f0bbd92eb78a7cfc1106f0a0a3e4cba7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_mx.jpg": {
-    "mtime": 1787388488.9093163,
+    "mtime": 1787396553.3450322,
     "hash": "0a8e3af0b451f232d7b8e5b1ec17575f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_pz.jpg": {
-    "mtime": 1787388488.9096391,
+    "mtime": 1787396553.345226,
     "hash": "0442d80880107432ae51dd8c6803a249"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_py.jpg": {
-    "mtime": 1787388488.9100163,
+    "mtime": 1787396553.3453987,
     "hash": "65d2c74e5f08b7aeef95d017e5cb07a6"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/SkyBox/tycho2t3_80_px.jpg": {
-    "mtime": 1787388488.9103603,
+    "mtime": 1787396553.3455575,
     "hash": "403aa235dad8bb7ee2a07556f9438677"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/LensFlare/StarBurst.jpg": {
-    "mtime": 1787388488.9108162,
+    "mtime": 1787396553.3458095,
     "hash": "27faaa4b21b2a66ac3496b20640e571f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Textures/LensFlare/DirtMask.jpg": {
-    "mtime": 1787388488.9110892,
+    "mtime": 1787396553.3459525,
     "hash": "c6ab0a71c7048eb83585b34bd32f4ee0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Images/cesium_credit.png": {
-    "mtime": 1787388488.911441,
+    "mtime": 1787396553.346196,
     "hash": "e78a4bab4cc0fe4aa2e91c1b4df07bb7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Images/ion-credit.png": {
-    "mtime": 1787388488.9117796,
+    "mtime": 1787396553.346324,
     "hash": "7abd3868ea7b01b167649670d1c16571"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Images/google_earth_credit.png": {
-    "mtime": 1787388488.9121435,
+    "mtime": 1787396553.3464527,
     "hash": "c61340038007c59c848e7ab03b4525d8"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Assets/Images/bing_maps_credit.png": {
-    "mtime": 1787388488.9123971,
+    "mtime": 1787396553.3466022,
     "hash": "544660a38c7604f85f23899c1145d6fd"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/info-loading.gif": {
-    "mtime": 1787388488.9293,
+    "mtime": 1787396553.3559499,
     "hash": "123c82eb80e819942d80a8ed398dc481"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/TimelineIcons.png": {
-    "mtime": 1787388488.9295719,
+    "mtime": 1787396553.3560627,
     "hash": "0ac1be82bd79e6be47a32376d286480f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/MouseMiddle.svg": {
-    "mtime": 1787388488.925579,
+    "mtime": 1787396553.3545163,
     "hash": "1a1c1c0aa398db3876493e486c690b87"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/Touch.svg": {
-    "mtime": 1787388488.9258819,
+    "mtime": 1787396553.3546278,
     "hash": "d20b9b9cad84fa347892b1a28b2bb58f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/MouseRight.svg": {
-    "mtime": 1787388488.9262471,
+    "mtime": 1787396553.3547478,
     "hash": "39bb69dcac6a42338c2585780a6f4b67"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/MouseLeft.svg": {
-    "mtime": 1787388488.9266145,
+    "mtime": 1787396553.3548923,
     "hash": "ec426ac066f16fcfde70f7849032db7d"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/TouchZoom.svg": {
-    "mtime": 1787388488.9269629,
+    "mtime": 1787396553.3550153,
     "hash": "ad3d114fc4a2ae0d2a5284cfe63ca4a3"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/TouchTilt.svg": {
-    "mtime": 1787388488.9272883,
+    "mtime": 1787396553.3551307,
     "hash": "90c1a78a78f6836a6df464a574c30348"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/TouchRotate.svg": {
-    "mtime": 1787388488.9276376,
+    "mtime": 1787396553.3552568,
     "hash": "2bcaa8e38ee16234dad05a1e430e6bef"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/Mouse.svg": {
-    "mtime": 1787388488.9280043,
+    "mtime": 1787396553.3553686,
     "hash": "d20e817d96978c41ff8e8ff915a8996f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/NavigationHelp/TouchDrag.svg": {
-    "mtime": 1787388488.9283552,
+    "mtime": 1787396553.355485,
     "hash": "b7b2e01f655a2e4e9c5588c550a22565"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/TerrainProviders/Ellipsoid.png": {
-    "mtime": 1787388488.928856,
+    "mtime": 1787396553.355659,
     "hash": "7e97c426bea847973b6879ff83129237"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/TerrainProviders/CesiumWorldTerrain.png": {
-    "mtime": 1787388488.9291534,
+    "mtime": 1787396553.3558347,
     "hash": "f3025a6929897974ddb8fa00cb27885b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/azureRoads.png": {
-    "mtime": 1787388488.9299545,
+    "mtime": 1787396553.3562593,
     "hash": "4e7cf5de3a17816c69f96b46de98a5b5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/stadiaAlidadeSmoothDark.png": {
-    "mtime": 1787388488.9302802,
+    "mtime": 1787396553.3563974,
     "hash": "a4aa009788fee449cdd8ca8c87519b9e"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/stamenWatercolor.png": {
-    "mtime": 1787388488.930516,
+    "mtime": 1787396553.3565662,
     "hash": "78bb2b11fcdcb7b923f1d5fb7948ba46"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/bingAerial.png": {
-    "mtime": 1787388488.9307952,
+    "mtime": 1787396553.356711,
     "hash": "0d3e6c8636fda15e7f3fa3f679fa6eca"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/mapboxTerrain.png": {
-    "mtime": 1787388488.9310658,
+    "mtime": 1787396553.356855,
     "hash": "c3f5f8efbeade9cf9d2b9c0847956351"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/ArcGisMapServiceWorldOcean.png": {
-    "mtime": 1787388488.9313598,
+    "mtime": 1787396553.35701,
     "hash": "6d8fcb845ae8258a5683d8d3528438e5"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/openStreetMap.png": {
-    "mtime": 1787388488.9316418,
+    "mtime": 1787396553.3571215,
     "hash": "f5cbdcd610e1f2a809032d66f7aaa21b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/bingRoads.png": {
-    "mtime": 1787388488.932036,
+    "mtime": 1787396553.3572328,
     "hash": "944ce4b82a18603c0f6893f6d11f8e9b"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/googleSatellite.png": {
-    "mtime": 1787388488.9323587,
+    "mtime": 1787396553.357352,
     "hash": "4c17761403d22d1e4c6f3437f785f62f"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/stadiaAlidadeSmooth.png": {
-    "mtime": 1787388488.9327407,
+    "mtime": 1787396553.3574805,
     "hash": "3bf519bd88a5189e22444c9f63cca570"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/blueMarble.png": {
-    "mtime": 1787388488.9331148,
+    "mtime": 1787396553.3576007,
     "hash": "fdb8304be9c58cae0c8f4136a71c9bff"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/mapboxStreets.png": {
-    "mtime": 1787388488.9334352,
+    "mtime": 1787396553.357726,
     "hash": "f16b1a76b11d68024faa30e616d9cc73"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/ArcGisMapServiceWorldHillshade.png": {
-    "mtime": 1787388488.9336846,
+    "mtime": 1787396553.3579168,
     "hash": "7b9953da5565afba068bb6d0e09820df"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/sentinel-2.png": {
-    "mtime": 1787388488.9340706,
+    "mtime": 1787396553.3581028,
     "hash": "9063437b66b5f20a486296e5add3bd4a"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/googleSatelliteLabels.png": {
-    "mtime": 1787388488.9343443,
+    "mtime": 1787396553.3582208,
     "hash": "0ff32e3bd72dcdcd1148be94340b856c"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/earthAtNight.png": {
-    "mtime": 1787388488.9347265,
+    "mtime": 1787396553.358347,
     "hash": "9a78ab2ec596f25272062e7fc0b34055"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/bingAerialLabels.png": {
-    "mtime": 1787388488.9350095,
+    "mtime": 1787396553.3585203,
     "hash": "de73042dd64cebac4668effbc1c65a58"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/ArcGisMapServiceWorldImagery.png": {
-    "mtime": 1787388488.935352,
+    "mtime": 1787396553.358756,
     "hash": "3b6ad38a7ff032b634e2c1dd22c32d76"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/naturalEarthII.png": {
-    "mtime": 1787388488.9357066,
+    "mtime": 1787396553.3589542,
     "hash": "8dcb51b6b3cc4c7f3038cdb914b3c678"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/googleContour.png": {
-    "mtime": 1787388488.935993,
+    "mtime": 1787396553.3592055,
     "hash": "a30f77ad493ff87676e086b884570aa2"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/stamenToner.png": {
-    "mtime": 1787388488.9362943,
+    "mtime": 1787396553.3593583,
     "hash": "d7021766e52265e01637c5068090bce0"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/mapQuestOpenStreetMap.png": {
-    "mtime": 1787388488.9365623,
+    "mtime": 1787396553.3595483,
     "hash": "9b4796ccc62872fabed34e7d56afe526"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/mapboxSatellite.png": {
-    "mtime": 1787388488.936786,
+    "mtime": 1787396553.3597004,
     "hash": "c213becf0985618aac81d4a03679c3a7"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/azureAerial.png": {
-    "mtime": 1787388488.9370565,
+    "mtime": 1787396553.3598306,
     "hash": "e4cfcf583eb0e3949159ec972235ae25"
   },
   "/Users/scottsyms/code/projects/satellite-animation/public/cesium/Widgets/Images/ImageryProviders/googleRoadmap.png": {
-    "mtime": 1787388488.937295,
+    "mtime": 1787396553.359977,
     "hash": "3d7a2360d604306814e920f9b1b10a4d"
   }
 }

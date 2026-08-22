@@ -380,6 +380,11 @@ body {
 .card-h .x:hover {
   color: var(--ink-bright);
 }
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
 .kv {
   display: grid;
   grid-template-columns: auto 1fr;

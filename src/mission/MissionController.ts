@@ -37,6 +37,8 @@ export interface MissionData {
 const PLAN_AHEAD_MS = 48 * 3_600_000;
 const PLAN_BACK_MS = 6 * 3_600_000;
 const RECENT_HIGHLIGHT_MS = 6 * 3_600_000;
+export const ACQUISITION_PRE_ROLL_MS = 30_000;
+export const ACQUISITION_POST_ROLL_MS = 5_000;
 
 export class MissionController {
   private viewer: Viewer;
@@ -70,6 +72,9 @@ export class MissionController {
   private lastActive: { id: string; endMs: number } | null = null;
   private autoSelected = false;
   private lastActiveCheck = 0;
+  private cameraAcqId: string | null = null;
+  private cameraViewSeq = 0;
+  private cameraPlayback: { playing: boolean; speed: number } | null = null;
 
   constructor(viewer: Viewer) {
     this.viewer = viewer;
@@ -144,24 +149,38 @@ export class MissionController {
     this.nowMs.set(t);
 
     // Active acquisition sweep + rolling footprint window (throttled)
-    if (t - this.lastActiveCheck > 100) {
-      this.lastActiveCheck = t;
-      this.recomputeActive(t);
-      this.refreshPlanned(t);
-    }
+    this.syncAtTime(t);
     this.renderer.fillProgress(t);
     this.camera.tick(t, this.viewer.scene.camera);
+    if (this.cameraAcqId) {
+      const a = this.byId.get(this.cameraAcqId);
+      if (!a || t < a.startMs - ACQUISITION_PRE_ROLL_MS || t > a.endMs + ACQUISITION_POST_ROLL_MS) {
+        this.exitAcquisitionView();
+      }
+    }
+  }
+
+  private syncAtTime(t: number, force = false): void {
+    if (!force && Math.abs(t - this.lastActiveCheck) <= 100) return;
+    this.lastActiveCheck = t;
+    this.recomputeActive(t);
+    this.refreshPlanned(t);
   }
 
   private recomputeActive(t: number): void {
     let active: Acquisition | null = null;
     let bestMid = Number.POSITIVE_INFINITY;
-    for (const a of this.plannedCache) {
-      if (a.startMs <= t && t <= a.endMs) {
-        const mid = (a.startMs + a.endMs) / 2;
-        if (Math.abs(mid - t) < bestMid) {
-          bestMid = Math.abs(mid - t);
-          active = a;
+    if (this.cameraAcqId) {
+      const tracked = this.byId.get(this.cameraAcqId);
+      if (tracked && tracked.startMs <= t && t <= tracked.endMs) active = tracked;
+    } else {
+      for (const a of this.plannedCache) {
+        if (a.startMs <= t && t <= a.endMs) {
+          const mid = (a.startMs + a.endMs) / 2;
+          if (Math.abs(mid - t) < bestMid) {
+            bestMid = Math.abs(mid - t);
+            active = a;
+          }
         }
       }
     }
@@ -196,7 +215,15 @@ export class MissionController {
 
   seek(ms: number): void {
     this.clock.seek(ms);
-    this.nowMs.set(this.clock.nowMs);
+    const t = this.clock.nowMs;
+    this.nowMs.set(t);
+    this.syncAtTime(t, true);
+    if (this.cameraAcqId) {
+      const a = this.byId.get(this.cameraAcqId);
+      if (!a || t < a.startMs - ACQUISITION_PRE_ROLL_MS || t > a.endMs + ACQUISITION_POST_ROLL_MS) {
+        this.exitAcquisitionView();
+      }
+    }
   }
 
   window(): { startMs: number; endMs: number } {
@@ -204,15 +231,21 @@ export class MissionController {
   }
 
   setMode(mode: CameraMode): void {
-    this.mode.set(mode);
-    if (mode === 'overview') this.camera.toOverview();
-    else if (mode === 'follow') {
+    if (mode === 'overview') {
+      if (this.cameraAcqId) this.exitAcquisitionView();
+      else {
+        this.camera.toOverview();
+        this.mode.set('overview');
+      }
+    } else if (mode === 'follow') {
+      if (this.cameraAcqId) this.exitAcquisitionView(false);
       const sat = this.satellites.find((s) => s.norad === get(this.selectedSat));
       if (sat) {
         this.camera.follow((tMs) => {
           const p = positionAt(sat.position, tMs);
           return p ? [p.x, p.y, p.z] : null;
         });
+        this.mode.set('follow');
         this.log('info', `follow ${sat.name}`);
       }
     }
@@ -224,14 +257,25 @@ export class MissionController {
   }
 
   selectSat(norad: number | null): void {
+    if (this.cameraAcqId) this.exitAcquisitionView(false);
     this.selectedSat.set(norad);
-    if (!norad) return;
+    if (!norad) {
+      if (get(this.mode) === 'follow') {
+        this.camera.unfollow();
+        this.mode.set('overview');
+      }
+      return;
+    }
     const sat = this.satellites.find((s) => s.norad === norad);
     const f = sat ? satFocus(sat, this.clock.nowMs) : null;
-    if (f) this.camera.focus(f);
+    if (f) {
+      this.camera.focus(f);
+      this.mode.set('overview');
+    }
   }
 
   selectAcq(id: string | null): void {
+    if (this.cameraAcqId) this.exitAcquisitionView(false);
     this.autoSelected = false; // user selections stay pinned until cleared
     this.selectedAcq.set(id);
     this.refreshPlanned(); // pin the ring even if outside the rolling window
@@ -241,14 +285,87 @@ export class MissionController {
     if (a?.centroid) {
       const alt = footprintAlt(a);
       this.camera.focus({ lon: a.centroid[0], lat: a.centroid[1], altM: alt });
+      this.mode.set('overview');
+    }
+  }
+
+  async playAcquisition(id: string): Promise<void> {
+    const acq = this.byId.get(id);
+    const sat = acq ? this.satellites.find((s) => s.name === acq.satid) : null;
+    if (!acq || !sat || !acq.centroid) {
+      this.log('warn', `satellite view unavailable for ${id}`);
+      return;
+    }
+
+    if (this.cameraAcqId || get(this.mode) === 'acquisition') this.exitAcquisitionView(false);
+    const seq = ++this.cameraViewSeq;
+    this.camera.cancelDrivenView();
+    this.cameraPlayback = { playing: this.clock.playing, speed: this.clock.speed };
+    this.clock.setPlaying(false);
+    this.playing.set(false);
+    this.seek(acq.startMs - ACQUISITION_PRE_ROLL_MS);
+
+    this.autoSelected = false;
+    this.selectedAcq.set(acq.id);
+    this.renderer.highlight(acq.id);
+    this.refreshPlanned();
+    this.cameraAcqId = acq.id;
+    this.mode.set('acquisition');
+
+    const centroid = Cesium.Cartesian3.fromDegrees(acq.centroid[0], acq.centroid[1], 0);
+    let lastTarget: [number, number, number] = [centroid.x, centroid.y, centroid.z];
+    const entered = await this.camera.trackAcquisition(
+      {
+        satelliteAt: (tMs) => {
+          const p = positionAt(sat.position, tMs);
+          return p ? [p.x, p.y, p.z] : null;
+        },
+        targetAt: (tMs) => {
+          const edge = this.renderer.leadingEdgeAt(acq.id, tMs);
+          if (edge) lastTarget = [edge.center.x, edge.center.y, edge.center.z];
+          return lastTarget;
+        },
+      },
+      this.clock.nowMs,
+    );
+    if (!entered || seq !== this.cameraViewSeq || this.cameraAcqId !== acq.id) {
+      if (seq === this.cameraViewSeq && this.cameraAcqId === acq.id) {
+        this.exitAcquisitionView(false);
+      }
+      return;
+    }
+
+    this.setSpeed(1);
+    this.clock.setPlaying(true);
+    this.playing.set(true);
+    this.log('info', `satellite view ${acq.id} · schematic`);
+  }
+
+  exitAcquisitionView(flyOverview = true): void {
+    if (!this.cameraAcqId && get(this.mode) !== 'acquisition') return;
+    this.cameraViewSeq++;
+    this.cameraAcqId = null;
+    if (flyOverview) this.camera.toOverview();
+    else this.camera.cancelDrivenView();
+    this.mode.set('overview');
+    const playback = this.cameraPlayback;
+    this.cameraPlayback = null;
+    if (playback) {
+      this.setSpeed(playback.speed);
+      this.clock.setPlaying(playback.playing);
+      this.playing.set(playback.playing);
     }
   }
 
   flyToSat(norad: number): void {
+    if (this.cameraAcqId) this.exitAcquisitionView(false);
     const sat = this.satellites.find((s) => s.norad === norad);
     if (!sat) return;
     const f = satFocus(sat, this.clock.nowMs);
-    if (f) this.camera.focus(f);
+    if (f) {
+      this.camera.focus(f);
+      this.mode.set('overview');
+    }
   }
 
   flyToAcq(id: string): void {

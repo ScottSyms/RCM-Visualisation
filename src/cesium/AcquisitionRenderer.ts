@@ -44,6 +44,12 @@ interface SweepState {
   color: Color;
 }
 
+export interface LeadingEdge {
+  min: Cartesian3;
+  center: Cartesian3;
+  max: Cartesian3;
+}
+
 export class AcquisitionRenderer {
   private viewer: Viewer;
   private acqs = new Map<string, Acquisition>();
@@ -222,13 +228,10 @@ export class AcquisitionRenderer {
     const s = this.sweep;
     if (!s) return;
     const tMs = Cesium.JulianDate.toDate(time).getTime();
-    const span = s.acq.endMs - s.acq.startMs;
-    const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
-    const tLead = s.params.tMin + prog * (s.params.tMax - s.params.tMin);
-    const leadMin = projectPoint([tLead, s.params.cMin], s.origin, s.axis);
-    const leadMax = projectPoint([tLead, s.params.cMax], s.origin, s.axis);
+    const edge = this.leadingEdgeAt(s.acq.id, tMs);
+    if (!edge) return;
     const pose = poseAt(s.rec, tMs);
-    Cesium.Cartesian3.fromDegrees(leadMin[0], leadMin[1], 0, undefined, this.curtainPos[0]);
+    Cesium.Cartesian3.clone(edge.min, this.curtainPos[0]);
     if (pose) {
       this.curtainPos[1].x = pose.pos[0];
       this.curtainPos[1].y = pose.pos[1];
@@ -238,7 +241,24 @@ export class AcquisitionRenderer {
       this.curtainPos[1].y = 0;
       this.curtainPos[1].z = 0;
     }
-    Cesium.Cartesian3.fromDegrees(leadMax[0], leadMax[1], 0, undefined, this.curtainPos[2]);
+    Cesium.Cartesian3.clone(edge.max, this.curtainPos[2]);
+  }
+
+  /** Ground target shared by the sweep curtain and acquisition camera. */
+  leadingEdgeAt(id: string, tMs: number): LeadingEdge | null {
+    const s = this.sweep;
+    if (!s || s.acq.id !== id) return null;
+    const span = s.acq.endMs - s.acq.startMs;
+    const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
+    const tLead = s.params.tMin + prog * (s.params.tMax - s.params.tMin);
+    const leadMin = projectPoint([tLead, s.params.cMin], s.origin, s.axis);
+    const leadCenter = projectPoint([tLead, (s.params.cMin + s.params.cMax) / 2], s.origin, s.axis);
+    const leadMax = projectPoint([tLead, s.params.cMax], s.origin, s.axis);
+    return {
+      min: Cesium.Cartesian3.fromDegrees(leadMin[0], leadMin[1], 0),
+      center: Cesium.Cartesian3.fromDegrees(leadCenter[0], leadCenter[1], 0),
+      max: Cesium.Cartesian3.fromDegrees(leadMax[0], leadMax[1], 0),
+    };
   }
 
   /** Reveal sweep bands up to the current progress fraction. */

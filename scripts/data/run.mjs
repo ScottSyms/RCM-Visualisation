@@ -1,4 +1,4 @@
-// Entry point for `npm run data` — runs the ingest pipeline (Node, type-stripped TS).
+// Entry point for `npm run data` — tsx loads the TypeScript ingest modules.
 import { run } from './pipeline.ts';
 
 try {
