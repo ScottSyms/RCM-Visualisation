@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>RCM — RADARSAT Constellation Mission Visualisation</title>
+    <!--
+      Cesium is provided as its self-contained UMD build (public/cesium/Cesium.js),
+      whose own Workers/ / Assets/ / Widgets/ / ThirdParty/ are copied verbatim to public/cesium.
+      The base URL is set before the library resolves asset URLs, so static resources are
+      found at runtime without any bundler integration.
+    -->
+    <script>window.CESIUM_BASE_URL = "/cesium/";</script>
+    <link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #02050a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>This visualisation requires JavaScript and WebGL.</noscript>
+    <script src="/cesium/Cesium.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

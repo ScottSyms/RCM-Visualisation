@@ -1,0 +1,8 @@
+node_modules/
+dist/
+public/cesium/
+public/data/
+graphify-out/cache/
+.DS_Store
+*.log
+*.local
