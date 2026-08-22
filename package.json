@@ -2,6 +2,7 @@
   "name": "rcm-mission-visualisation",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "description": "Cinematic interactive visualisation of the RADARSAT Constellation Mission (RCM)",
   "scripts": {
