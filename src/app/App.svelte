@@ -5,8 +5,9 @@
   import { MissionController } from '../mission/MissionController.ts';
   import Timeline from '../timeline/Timeline.svelte';
   import LayerDrawer from '../ui/LayerDrawer.svelte';
-  import AcquisitionCard from '../ui/AcquisitionCard.svelte';
-  import SatelliteCard from '../ui/SatelliteCard.svelte';
+import AcquisitionBrowser from '../ui/AcquisitionBrowser.svelte';
+import AcquisitionCard from '../ui/AcquisitionCard.svelte';
+import SatelliteCard from '../ui/SatelliteCard.svelte';
   import Diagnostics from '../ui/Diagnostics.svelte';
 
   type Phase = 'loading' | 'ready' | 'error' | 'nodata';
@@ -97,6 +98,8 @@
     track={ctrl.track}
     satFilter={ctrl.satFilter}
   />
+
+  <AcquisitionBrowser controller={ctrl} />
 
   <AcquisitionCard selectedAcq={ctrl.selectedAcq} mode={ctrl.mode} controller={ctrl} />
   <SatelliteCard selectedSat={ctrl.selectedSat} controller={ctrl} />

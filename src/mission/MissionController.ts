@@ -366,6 +366,33 @@ export class MissionController {
     this.selectAcq(id);
   }
 
+  async navigateToAcquisition(id: string): Promise<void> {
+    const acq = this.byId.get(id);
+    if (!acq) return;
+
+    // 1. pause playback
+    await this.togglePlay();
+
+    // 2. exit driven camera modes (follow / acquisition view)
+    if (this.cameraSatName) this.exitAcquisitionView(false);
+
+    // 3. seek to acquisition start
+    this.seek(acq.startMs);
+
+    // 4. pin and highlight the acquisition
+    this.selectAcq(id);
+
+    // 5. try to focus the satellite for inspection
+    const sat = this.satellites.find((s) => s.name === acq.satid);
+    if (sat) {
+      const f = satFocus(sat, this.clock.nowMs);
+      if (f) {
+        this.camera.focus(f);
+        this.mode.set('overview');
+      }
+    }
+  }
+
   /* ------------------------------- filters ------------------------------ */
 
   setSatFilter(sats: Set<string>): void {
