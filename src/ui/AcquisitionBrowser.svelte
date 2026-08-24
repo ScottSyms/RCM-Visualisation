@@ -22,7 +22,7 @@
   // does not in this runtime. We re-assign filtered below when
   // search/satFilter change, and the derived below re-runs automatically.
   let filteredDerived = $derived(
-    controller.plannedList().filter(
+    filtered.filter(
       (a) =>
         satFilterState.size === 0 ||
         satFilterState.has(a.satid) ||
@@ -62,20 +62,19 @@
     }
     // re-sort: re-assign filtered to trigger derived re-run
     const dir = sortState.dir;
-    const rows = controller.plannedList().filter(
+    filtered = filtered.filter(
       (a) =>
         satFilterState.size === 0 ||
         satFilterState.has(a.satid) ||
         a.beam.toLowerCase().includes(searchL) ||
         a.id.toLowerCase().includes(searchL)
     );
-    rows.sort((a, b) => {
+    filtered.sort((a, b) => {
       let ka = a.startMs,
         kb = b.startMs;
       if (ka !== kb) return ka - kb;
       return a.satid.localeCompare(b.satid) * dir;
     });
-    filtered = rows; // direct assignment; $state dep tracking fires re-derive
     let _ = pageRows;
     page = 1;
   }
@@ -90,34 +89,6 @@
   </div>
 
   <div class="browser-body">
-    <!-- filters -->
-    <div class="filter-row">
-      <input
-        class="filter-inp"
-        type="text"
-        placeholder="Search ID, satellite, beam…"
-        bind:value={search}
-      />
-      <div class="sat-filter">
-        <span class="lbl">Satellites</span>
-        {#each [...new Set(controller.plannedList().map((a) => a.satid))] as sat}
-          <label class="sat-row">
-            <input
-              type="checkbox"
-              class="sat-chk"
-              onclick={() => {
-                const s = new Set(satFilterState);
-                s.has(sat) ? s.delete(sat) : s.add(sat);
-                satFilterState = s;
-                controller.setSatFilter(s);
-              }}
-            />
-            <span>{sat}</span>
-          </label>
-        {/each}}
-      </div>
-    </div>
-
     <!-- table -->
     {#if pageRows.length > 0}
       <table>
@@ -200,7 +171,7 @@
     border-radius: 10px;
     backdrop-filter: blur(14px) saturate(1.1);
     -webkit-backdrop-filter: blur(14px) saturate(1.1);
-    box-shadow: 0 12px 40x rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
     gap: 14px;
