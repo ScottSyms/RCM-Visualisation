@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-import type { Writable } from 'svelte/store';
+  import type { Writable } from 'svelte/store';
   import type { MissionController } from '../mission/MissionController.ts';
   import type { Acquisition } from '../../scripts/data/model.ts';
   import { fmtUtc } from '../lib/format.ts';
@@ -86,7 +86,7 @@ import type { Writable } from 'svelte/store';
 <div class="browser panel" transition:fade>
   <div class="browser-h">
     <span class="browser-t">Acquisitions</span>
-    <span class="browser-x" onclick={() => (selectedId = controller.selectedAcq)} title="Close">✕</span>
+    <span class="browser-x" onclick={() => (selectedId = controller.selectedAcq ? controller.selectedAcq : null)} title="Close">✕</span>
   </div>
 
   <div class="browser-body">
@@ -119,9 +119,7 @@ import type { Writable } from 'svelte/store';
     </div>
 
     <!-- table -->
-    {#if pageRows.length === 0}
-      <div class="k-dim">No acquisitions match the current filters.</div>
-    {:else}
+    {#if pageRows.length > 0}
       <table>
         <thead>
           <tr>
@@ -173,15 +171,19 @@ import type { Writable } from 'svelte/store';
         </tbody>
       </table>
     {/if}
-
-    <!-- pagination -->
-    {pageCount > 1}
-    <div class="pager">
-      <button class="pager-btn" onclick={() => goPage(-1)}>Prev</button>
-      <span class="pager-info">Page {page} of {pageCount}</span>
-      <button class="pager-btn" onclick={() => goPage(1)}>Next</button>
-    </div>
+    {#if pageRows.length === 0}
+      <div class="k-dim">No acquisitions match the current filters.</div>
+    {/if}
   </div>
+
+  <!-- pagination -->
+  {#if pageCount > 1 && pageRows.length > 0}
+  <div class="pager">
+    <button class="pager-btn" onclick={() => goPage(-1)}>Prev</button>
+    <span class="pager-info">Page {page} of {pageCount}</span>
+    <button class="pager-btn" onclick={() => goPage(1)}>Next</button>
+  </div>
+  {/if}
 </div>
 
 <style>
@@ -198,7 +200,7 @@ import type { Writable } from 'svelte/store';
     border-radius: 10px;
     backdrop-filter: blur(14px) saturate(1.1);
     -webkit-backdrop-filter: blur(14px) saturate(1.1);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    box-shadow: 0 12px 40x rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
     gap: 14px;
