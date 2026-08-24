@@ -277,7 +277,12 @@ export class MissionController {
     const a = this.renderer.getAcq(id);
     if (a?.centroid) {
       const alt = altM ?? footprintAlt(a);
-      this.camera.focus({ lon: a.centroid[0], lat: a.centroid[1], altM: alt });
+      this.camera.focus({ 
+        lon: a.centroid[0], 
+        lat: a.centroid[1], 
+        altM: alt,
+        pitch: -Math.PI / 2  // centroid centered on screen
+      });
       this.mode.set('overview');
     }
   }
