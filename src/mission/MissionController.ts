@@ -267,7 +267,7 @@ export class MissionController {
     }
   }
 
-  selectAcq(id: string | null): void {
+  selectAcq(id: string | null, altM?: number): void {
     const satelliteView = this.cameraSatName != null;
     this.autoSelected = false; // user selections stay pinned until cleared
     this.selectedAcq.set(id);
@@ -276,7 +276,7 @@ export class MissionController {
     if (!id || satelliteView) return;
     const a = this.renderer.getAcq(id);
     if (a?.centroid) {
-      const alt = footprintAlt(a);
+      const alt = altM ?? footprintAlt(a);
       this.camera.focus({ lon: a.centroid[0], lat: a.centroid[1], altM: alt });
       this.mode.set('overview');
     }
@@ -380,8 +380,8 @@ export class MissionController {
     // 3. seek to acquisition start
     this.seek(acq.startMs);
 
-    // 4. pin and highlight the acquisition (this frames the footprint)
-    this.selectAcq(id);
+    // 4. pin and highlight the acquisition with 3000km framing altitude
+    this.selectAcq(id, 3_000_000);
   }
 
   /* ------------------------------- filters ------------------------------ */
