@@ -370,8 +370,9 @@ export class MissionController {
     const acq = this.byId.get(id);
     if (!acq) return;
 
-    // 1. pause playback
-    await this.togglePlay();
+    // 1. pause playback (explicit stop, not toggle)
+    this.clock.setPlaying(false);
+    this.playing.set(false);
 
     // 2. exit driven camera modes (follow / acquisition view)
     if (this.cameraSatName) this.exitAcquisitionView(false);
@@ -379,18 +380,8 @@ export class MissionController {
     // 3. seek to acquisition start
     this.seek(acq.startMs);
 
-    // 4. pin and highlight the acquisition
+    // 4. pin and highlight the acquisition (this frames the footprint)
     this.selectAcq(id);
-
-    // 5. try to focus the satellite for inspection
-    const sat = this.satellites.find((s) => s.name === acq.satid);
-    if (sat) {
-      const f = satFocus(sat, this.clock.nowMs);
-      if (f) {
-        this.camera.focus(f);
-        this.mode.set('overview');
-      }
-    }
   }
 
   /* ------------------------------- filters ------------------------------ */
