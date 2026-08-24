@@ -1,8 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import type { Writable } from 'svelte/store';
   import type { MissionController } from '../mission/MissionController.ts';
-  import type { Acquisition } from '../../scripts/data/model.ts';
   import { fmtUtc } from '../lib/format.ts';
 
   let { controller }: { controller: MissionController } = $props();
@@ -40,7 +38,7 @@
   // rows for current page — derived from filteredDerived
   let pageRows = $derived(filteredDerived.slice((page - 1) * 50, page * 50));
 
-  let selectedId = $derived(controller.selectedAcq);
+  let selectedAcq = controller.selectedAcq;
 
   // --- actions ---
   function goPage(n: number): void {
@@ -49,8 +47,7 @@
   }
 
   function onRowClick(id: string): void {
-    controller.navigateToAcquisition(id);
-    selectedId = controller.selectedAcq;
+    void controller.navigateToAcquisition(id);
   }
 
   function sortHandler(key: string): void {
@@ -85,7 +82,7 @@
 <div class="browser panel" transition:fade>
   <div class="browser-h">
     <span class="browser-t">Acquisitions</span>
-    <span class="browser-x" onclick={() => (selectedId = controller.selectedAcq ? controller.selectedAcq : null)} title="Close">✕</span>
+    <button class="browser-x" onclick={() => controller.selectAcq(null)} title="Clear selection" aria-label="Clear selection">✕</button>
   </div>
 
   <div class="browser-body">
@@ -123,7 +120,7 @@
         </thead>
         <tbody>
           {#each pageRows as acq}
-            <tr class={acq.id === selectedId ? 'row-selected' : ''} onclick={() => onRowClick(acq.id)}>
+            <tr class:row-selected={acq.id === $selectedAcq} onclick={() => onRowClick(acq.id)}>
               <td class="cell-start">{fmtUtc(acq.startMs)}</td>
               <td class="cell-sat">{acq.satid}</td>
               <td class="cell-centroid">
@@ -160,10 +157,12 @@
 <style>
   /* -- browser panel ---------------------------------------------------- */
   .browser {
-    top: 18px;
-    right: 20px;
+    position: absolute;
+    z-index: 20;
+    top: 110px;
+    left: 20px;
     width: 340px;
-    max-height: calc(100% - 130px);
+    max-height: calc(100% - 200px);
     overflow: auto;
     padding: 14px;
     background: var(--panel);
@@ -189,7 +188,11 @@
   }
   .browser-x {
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: transparent;
     color: var(--ink-dim);
+    font: inherit;
     font-size: 15px;
     line-height: 1;
   }
