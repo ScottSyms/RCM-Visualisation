@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { createViewer } from '../cesium/ViewerFactory.ts';
   import { loadMissionData, plannedWindow } from '../lib/data.ts';
-  import { resolvePlaybackStart } from '../lib/playback-time.ts';
+  import { buildPlaybackUrl, resolvePlaybackStart } from '../lib/playback-time.ts';
   import { MissionController } from '../mission/MissionController.ts';
   import Timeline from '../timeline/Timeline.svelte';
   import LayerDrawer from '../ui/LayerDrawer.svelte';
@@ -28,9 +28,26 @@
   function seekFromTimestamp(ms: number): void {
     if (!ctrl) return;
     ctrl.seek(ms);
-    const url = new URL(window.location.href);
-    url.searchParams.set('start', new Date(ctrl.clock.nowMs).toISOString());
+    const url = new URL(buildPlaybackUrl(window.location.href, ctrl.clock.nowMs));
     window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  async function copyPlaybackLink(ms: number): Promise<void> {
+    const link = buildPlaybackUrl(window.location.href, ms);
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(link);
+      return;
+    }
+
+    const input = document.createElement('textarea');
+    input.value = link;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    const copied = document.execCommand('copy');
+    input.remove();
+    if (!copied) throw new Error('Clipboard copy failed');
   }
 
   function toggleMobileDrawer(drawer: Exclude<MobileDrawer, null>): void {
@@ -180,6 +197,7 @@
     onSpeed={(m) => ctrl?.setSpeed(m)}
     onSeek={(ms) => ctrl?.seek(ms)}
     onTimestampSeek={seekFromTimestamp}
+    onCopyLink={copyPlaybackLink}
     onMode={(m) => ctrl?.setMode(m)}
     onSatelliteViewHeight={(deltaKm) => ctrl?.adjustSatelliteViewHeight(deltaKm)}
     onSatelliteViewSat={(norad) => ctrl?.selectSatelliteView(norad)}

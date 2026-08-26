@@ -245,6 +245,9 @@ body {
   font-size: 10px;
   text-transform: uppercase;
 }
+.tl-time .tl-copy {
+  min-width: 52px;
+}
 .tl-time input:focus,
 .tl-time button:hover {
   border-color: var(--stroke-strong);

@@ -24,3 +24,9 @@ export function resolvePlaybackStart(
 export function formatUtcInput(timestampMs: number): string {
   return new Date(timestampMs).toISOString().slice(0, 19);
 }
+
+export function buildPlaybackUrl(href: string, timestampMs: number): string {
+  const url = new URL(href);
+  url.searchParams.set('start', new Date(timestampMs).toISOString());
+  return url.toString();
+}

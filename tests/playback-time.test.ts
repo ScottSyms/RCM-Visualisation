@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  buildPlaybackUrl,
   clampTimestamp,
   formatUtcInput,
   parseUtcTimestamp,
@@ -34,5 +35,12 @@ describe('playback timestamps', () => {
 
   it('formats a UTC value for a datetime-local field', () => {
     expect(formatUtcInput(Date.parse('2026-09-08T16:49:00.123Z'))).toBe('2026-09-08T16:49:00');
+  });
+
+  it('builds a shareable URL while preserving other parameters and the hash', () => {
+    const timestamp = Date.parse('2026-09-08T16:49:00Z');
+    expect(buildPlaybackUrl('https://example.com/view?rcm=noglobe#scene', timestamp)).toBe(
+      'https://example.com/view?rcm=noglobe&start=2026-09-08T16%3A49%3A00.000Z#scene',
+    );
   });
 });

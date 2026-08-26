@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
   import type { Writable } from 'svelte/store';
   import type { CameraMode, SatelliteView } from '../mission/types.ts';
   import { fmtUtc, fmtSpeed } from '../lib/format.ts';
@@ -18,6 +19,7 @@
     onSpeed,
     onSeek,
     onTimestampSeek,
+    onCopyLink,
     onMode,
     onSatelliteViewHeight,
     onSatelliteViewSat,
@@ -35,6 +37,7 @@
     onSpeed: (m: number) => void;
     onSeek: (ms: number) => void;
     onTimestampSeek: (ms: number) => void;
+    onCopyLink: (ms: number) => Promise<void>;
     onMode: (m: CameraMode) => void;
     onSatelliteViewHeight: (deltaKm: number) => void;
     onSatelliteViewSat: (norad: number) => void;
@@ -48,6 +51,10 @@
   let dateInput = $state('');
   let timeInput = $state('');
   let mobileCollapsed = $state(true);
+  let copyStatus = $state<'idle' | 'copied' | 'error'>('idle');
+  let copyTimer: ReturnType<typeof setTimeout> | undefined;
+
+  onDestroy(() => clearTimeout(copyTimer));
 
   $effect(() => {
     if (!editingTimestamp && Number.isFinite($nowMs)) setTimestampInputs($nowMs);
@@ -90,6 +97,16 @@
     editingTimestamp = false;
     (e.currentTarget as HTMLInputElement).blur();
   }
+  async function copyLink(): Promise<void> {
+    clearTimeout(copyTimer);
+    try {
+      await onCopyLink($nowMs);
+      copyStatus = 'copied';
+    } catch {
+      copyStatus = 'error';
+    }
+    copyTimer = setTimeout(() => (copyStatus = 'idle'), 1800);
+  }
 </script>
 
 <div class="tl panel" class:mobile-collapsed={mobileCollapsed} id="mission-timeline">
@@ -130,6 +147,9 @@
       />
       <span>UTC</span>
       <button type="submit">Go</button>
+      <button class="tl-copy" type="button" onclick={() => void copyLink()}>
+        {copyStatus === 'copied' ? 'Copied' : copyStatus === 'error' ? 'Retry' : 'Copy'}
+      </button>
     </form>
     <button class="tl-btn play" onclick={onTogglePlay} title="Play / pause">
       {$playing ? '⏸' : '▶'}
