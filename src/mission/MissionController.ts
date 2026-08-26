@@ -32,12 +32,12 @@ export interface MissionData {
  * Rolling window (ms) around mission time within which planned footprints are
  * *drawn*. Rendering the whole two-week plan (thousands of entity polygons) at
  * boot exceeds the buffer allocation Cesium's instanced entity pipeline can
- * back, so the scene shows [now-6h, now+48h] and scrolls with the clock
- * (~1.3k entities steady state). The selected acquisition is always pinned.
+ * back, so the scene shows [now-3h, now+48h] and scrolls with the clock.
+ * Selected footprints follow the same three-hour stale-data cutoff.
  */
 const PLAN_AHEAD_MS = 48 * 3_600_000;
-const PLAN_BACK_MS = 6 * 3_600_000;
-const RECENT_HIGHLIGHT_MS = 6 * 3_600_000;
+const PLAN_BACK_MS = 3 * 3_600_000;
+const RECENT_HIGHLIGHT_MS = 3 * 3_600_000;
 const SATELLITE_VIEW_LOOKAHEAD_MS = 100 * 60_000;
 
 export class MissionController {
@@ -264,7 +264,7 @@ export class MissionController {
     this.refreshPlanned(); // pin the ring even if outside the rolling window
     this.renderer.highlight(id);
     if (!id || satelliteView) return;
-    const a = this.renderer.getAcq(id);
+    const a = this.byId.get(id);
     if (a?.centroid) {
       const alt = altM ?? footprintAlt(a);
       this.camera.focus({ 
@@ -409,12 +409,12 @@ export class MissionController {
 
   /**
    * Sync the drawn planned entities with: satellite filter AND the rolling
-   * time window AND "show planned", plus the pinned selection.
+   * time window AND "show planned", plus a selected footprint that is not stale.
    */
   private refreshPlanned(tMs?: number): void {
     const t = tMs ?? this.clock.nowMs;
-    // Release the auto highlight ~6 h after the acquisition ends; user
-    // selections stay pinned until explicitly cleared.
+    // Release the automatic selection three hours after the acquisition ends.
+    // Manual selection metadata remains available after its polygon ages out.
     if (this.autoSelected && this.lastActive && t > this.lastActive.endMs + RECENT_HIGHLIGHT_MS) {
       this.autoSelected = false;
       this.selectedAcq.set(null);
@@ -442,7 +442,8 @@ export class MissionController {
         }
       }
     }
-    if (selected) want.add(selected);
+    const selectedAcquisition = selected ? this.byId.get(selected) : null;
+    if (selectedAcquisition && selectedAcquisition.endMs >= lo) want.add(selectedAcquisition.id);
 
     for (const id of [...this.shown]) {
       if (!want.has(id)) {
@@ -462,7 +463,7 @@ export class MissionController {
   /* --------------------------------- misc ------------------------------- */
 
   acquisition(id: string): Acquisition | null {
-    return this.renderer.getAcq(id) ?? null;
+    return this.byId.get(id) ?? null;
   }
 
   plannedList(): Acquisition[] {

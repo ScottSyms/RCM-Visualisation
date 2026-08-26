@@ -278,7 +278,11 @@ export class AcquisitionRenderer {
 
   /** Reveal every active sweep's bands up to its current progress fraction. */
   fillProgress(tMs: number): void {
-    for (const s of this.sweeps.values()) {
+    for (const [id, s] of this.sweeps) {
+      if (tMs < s.acq.startMs || tMs > s.acq.endMs) {
+        this.stopSweep(id);
+        continue;
+      }
       const span = s.acq.endMs - s.acq.startMs;
       const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
       const k = Math.round(prog * s.bands.length);
