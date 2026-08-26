@@ -56,6 +56,14 @@ npm run dev
 
 Vite serves the application at `http://localhost:5173` by default.
 
+To open the visualisation at a specific UTC playback timestamp, provide an ISO-8601
+`start` query parameter. Invalid values use the generated mission clock seed, and
+timestamps outside the mission window are clamped to the nearest boundary.
+
+```text
+http://localhost:5173/?start=2026-09-08T16:49:00Z
+```
+
 ## Commands
 
 | Command | Purpose |
@@ -98,6 +106,9 @@ Mission data is refreshed whenever a new deployment runs. Use a scheduled deploy
 ## Controls
 
 - Use the timeline to play, pause, change speed, or seek.
+- Enter a UTC timestamp in the timeline and select **Go** to seek and update the shareable `start` URL.
+- On phones, use the **Browse** and **Info** edge handles to expand the acquisition and detail drawers.
+- The phone timeline starts collapsed; use the bottom arrow to reveal or hide the full playback controls.
 - Select **Globe** for the overview camera.
 - Select a satellite and choose **Follow** to track it closely.
 - Select an acquisition and choose **Satellite view** for the wide trailing perspective.

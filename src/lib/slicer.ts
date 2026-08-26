@@ -11,8 +11,21 @@ export interface SliceResult {
   params: SliceParams | null;
 }
 
+interface SliceResponse {
+  id: number;
+  result: SliceResult | null;
+}
+
+interface PendingSlice {
+  resolve: (result: SliceResult | null) => void;
+  fallback: () => SliceResult | null;
+  timer: ReturnType<typeof setTimeout>;
+}
+
 export class Slicer {
   private worker: Worker | null = null;
+  private requestSeq = 0;
+  private pending = new Map<number, PendingSlice>();
 
   constructor() {
     try {
@@ -20,6 +33,8 @@ export class Slicer {
         new URL('../workers/geometry.worker.ts', import.meta.url),
         { type: 'module' },
       );
+      this.worker.addEventListener('message', this.onMessage);
+      this.worker.addEventListener('error', this.onError);
     } catch {
       this.worker = null;
     }
@@ -36,33 +51,49 @@ export class Slicer {
     const w = this.worker;
     if (!w) return sync();
     return await new Promise<SliceResult | null>((resolve) => {
-      const finish = w.removeEventListener.bind(w) as never;
+      const id = ++this.requestSeq;
       const timer = setTimeout(() => {
-        cleanup();
+        this.pending.delete(id);
         resolve(sync());
       }, 2500);
-      const onmessage = (e: MessageEvent<SliceResult | null>): void => {
-        cleanup();
-        resolve(e.data);
-      };
-      const onerror = (): void => {
-        cleanup();
-        resolve(sync());
-      };
-      const cleanup = (): void => {
-        w.removeEventListener('message', onmessage);
-        w.removeEventListener('error', onerror);
+      this.pending.set(id, { resolve, fallback: sync, timer });
+      try {
+        w.postMessage({ id, rings, origin, axis, n });
+      } catch {
         clearTimeout(timer);
-        void finish;
-      };
-      w.addEventListener('message', onmessage);
-      w.addEventListener('error', onerror);
-      w.postMessage({ rings, origin, axis, n });
+        this.pending.delete(id);
+        resolve(sync());
+      }
     });
   }
 
   dispose(): void {
+    this.worker?.removeEventListener('message', this.onMessage);
+    this.worker?.removeEventListener('error', this.onError);
     this.worker?.terminate();
     this.worker = null;
+    this.resolvePendingWithFallback();
+  }
+
+  private onMessage = (event: MessageEvent<SliceResponse>): void => {
+    const pending = this.pending.get(event.data.id);
+    if (!pending) return;
+    clearTimeout(pending.timer);
+    this.pending.delete(event.data.id);
+    pending.resolve(event.data.result);
+  };
+
+  private onError = (): void => {
+    this.worker?.terminate();
+    this.worker = null;
+    this.resolvePendingWithFallback();
+  };
+
+  private resolvePendingWithFallback(): void {
+    for (const pending of this.pending.values()) {
+      clearTimeout(pending.timer);
+      pending.resolve(pending.fallback());
+    }
+    this.pending.clear();
   }
 }

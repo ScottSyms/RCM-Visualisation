@@ -14,6 +14,7 @@ import { styleEarth } from '../cesium/EarthStyle.ts';
 import { AcquisitionRenderer } from '../cesium/AcquisitionRenderer.ts';
 import { CameraController } from '../cesium/CameraController.ts';
 import { MissionClock } from './MissionClock.ts';
+import { activeAcquisitionsAt, primaryAcquisition } from './active-acquisitions.ts';
 import type { CameraMode, SatelliteView, DiagnosticLine } from './types.ts';
 import type { SatRec } from 'satellite.js';
 import { debugFlags } from '../lib/debug-flags.ts';
@@ -69,7 +70,8 @@ export class MissionController {
   private pastCache: PastPoint[] = [];
   private manifest: Manifest | null = null;
   private shown = new Set<string>();
-  private activeId: string | null = null;
+  private activeIds = new Set<string>();
+  private primaryActiveId: string | null = null;
   private lastActive: { id: string; endMs: number } | null = null;
   private autoSelected = false;
   private lastActiveCheck = 0;
@@ -161,40 +163,28 @@ export class MissionController {
   }
 
   private recomputeActive(t: number): void {
-    let active: Acquisition | null = null;
-    let bestMid = Number.POSITIVE_INFINITY;
-    if (this.cameraSatName) {
-      for (const a of this.plannedCache) {
-        if (a.satid !== this.cameraSatName || a.startMs > t || t > a.endMs) continue;
-        const mid = (a.startMs + a.endMs) / 2;
-        if (Math.abs(mid - t) < bestMid) {
-          bestMid = Math.abs(mid - t);
-          active = a;
-        }
-      }
-    } else {
-      for (const a of this.plannedCache) {
-        if (a.startMs <= t && t <= a.endMs) {
-          const mid = (a.startMs + a.endMs) / 2;
-          if (Math.abs(mid - t) < bestMid) {
-            bestMid = Math.abs(mid - t);
-            active = a;
-          }
-        }
-      }
+    const active = activeAcquisitionsAt(this.plannedCache, t);
+    const nextIds = new Set(active.map((a) => a.id));
+
+    for (const id of this.activeIds) {
+      if (!nextIds.has(id)) this.renderer.stopSweep(id);
     }
-    const id = active ? active.id : null;
-    if (id === this.activeId) return;
-    this.activeId = id;
-    if (active) {
-      this.lastActive = { id: active.id, endMs: active.endMs };
-      const rec = this.recFor(active.satid);
-      if (rec) this.renderer.prepareSweep(active, rec, this.colorFor(active.satid));
-      this.selectedAcq.set(active.id);
-      this.renderer.highlight(active.id);
+    for (const acquisition of active) {
+      if (this.activeIds.has(acquisition.id)) continue;
+      const rec = this.recFor(acquisition.satid);
+      if (rec) void this.renderer.prepareSweep(acquisition, rec, this.colorFor(acquisition.satid));
+    }
+    this.activeIds = nextIds;
+
+    const primary = primaryAcquisition(active, t, this.cameraSatName);
+    const primaryId = primary?.id ?? null;
+    if (primaryId === this.primaryActiveId) return;
+    this.primaryActiveId = primaryId;
+    if (primary) {
+      this.lastActive = { id: primary.id, endMs: primary.endMs };
+      this.selectedAcq.set(primary.id);
+      this.renderer.highlight(primary.id);
       this.autoSelected = true;
-    } else {
-      this.renderer.clearSweep();
     }
   }
 

@@ -6,6 +6,7 @@
 import { computeSlices, type LonLat, type Vec2 } from '../lib/geometry.ts';
 
 interface SliceReq {
+  id: number;
   rings: LonLat[][];
   origin: LonLat;
   axis: Vec2;
@@ -18,7 +19,7 @@ const ctx = self as unknown as {
 };
 
 ctx.onmessage = (e: MessageEvent<SliceReq>): void => {
-  const { rings, origin, axis, n } = e.data;
-  const out = computeSlices(rings, origin, axis, n);
-  ctx.postMessage(out);
+  const { id, rings, origin, axis, n } = e.data;
+  const result = computeSlices(rings, origin, axis, n);
+  ctx.postMessage({ id, result });
 };

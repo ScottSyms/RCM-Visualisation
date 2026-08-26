@@ -5,9 +5,9 @@
  *   (antimeridian splits stay on the correct side of the date line).
  * - Past acquisitions: a single batched point cloud at footprint centroids —
  *   cheap and dense, reads as *completed* coverage.
- * - The active acquisition is swept: its tangent-plane bands fill in with the
- *   satellite color as the clock crosses it, with a beam from the spacecraft to
- *   the leading edge (spec §10.3, §13).
+ * - Active acquisitions are swept concurrently: their tangent-plane bands fill
+ *   in with each satellite's color as the clock crosses them, with beams from
+ *   the spacecraft to each leading edge (spec §10.3, §13).
  */
 import type {
   Cartesian3,
@@ -56,13 +56,9 @@ export class AcquisitionRenderer {
   private ringIds = new Map<string, string[]>();
   private past: PointPrimitiveCollection | null = null;
   private selected: string | null = null;
-  private sweep: SweepState | null = null;
+  private sweeps = new Map<string, SweepState>();
+  private pendingSweeps = new Map<string, number>();
   private sweepSeq = 0;
-  private curtainPos = [
-    new Cesium.Cartesian3(0, 0, 0),
-    new Cesium.Cartesian3(0, 0, 0),
-    new Cesium.Cartesian3(0, 0, 0),
-  ];
   private slicer = new Slicer();
 
   constructor(viewer: Viewer) {
@@ -178,20 +174,25 @@ export class AcquisitionRenderer {
 
   /* --------------------------------- sweep ------------------------------- */
 
-  /** Build sweep bands when an acquisition becomes the active one. */
+  /** Build sweep bands when an acquisition becomes active. */
   async prepareSweep(acq: Acquisition, rec: SatRec, satColor: string): Promise<void> {
-    this.clearSweep();
+    this.stopSweep(acq.id);
     const seq = ++this.sweepSeq;
+    this.pendingSweeps.set(acq.id, seq);
     const mid = (acq.startMs + acq.endMs) / 2;
     const pose = poseAt(rec, mid);
-    if (!pose) return;
+    if (!pose) {
+      this.pendingSweeps.delete(acq.id);
+      return;
+    }
     const { origin, axis } = localFrameFromPose(pose);
     const n = INGEST.sliceCount;
     const res =
       (await this.slicer.slice(acq.footprint, origin, axis, n)) ??
       this.slicer.computeSlices(acq.footprint, origin, axis, n);
+    if (this.pendingSweeps.get(acq.id) !== seq) return;
+    this.pendingSweeps.delete(acq.id);
     if (!res || res.params == null) return;
-    if (seq !== this.sweepSeq) return; // superseded by a newer sweep
 
     const color = Cesium.Color.fromCssColorString(satColor);
     const bands: Entity[] = res.slices.map((ring) => {
@@ -209,9 +210,14 @@ export class AcquisitionRenderer {
       return ent;
     });
 
+    const curtainPos = [
+      new Cesium.Cartesian3(0, 0, 0),
+      new Cesium.Cartesian3(0, 0, 0),
+      new Cesium.Cartesian3(0, 0, 0),
+    ];
     const curve = new Cesium.CallbackProperty((time: JulianDate | undefined): Cartesian3[] => {
-      if (time) this.fillCurtain(time);
-      return this.curtainPos;
+      if (time) this.fillCurtain(acq, rec, origin, axis, res.params!, curtainPos, time);
+      return curtainPos;
     }, false);
     const beam = this.viewer.entities.add({
       polyline: {
@@ -221,39 +227,48 @@ export class AcquisitionRenderer {
       },
     });
 
-    this.sweep = { acq, rec, origin, axis, params: res.params, bands, beam, color };
+    this.sweeps.set(acq.id, { acq, rec, origin, axis, params: res.params, bands, beam, color });
   }
 
-  private fillCurtain(time: JulianDate): void {
-    const s = this.sweep;
-    if (!s) return;
+  private fillCurtain(
+    acq: Acquisition,
+    rec: SatRec,
+    origin: [number, number],
+    axis: [number, number],
+    params: NonNullable<SliceResult['params']>,
+    curtainPos: Cartesian3[],
+    time: JulianDate,
+  ): void {
     const tMs = Cesium.JulianDate.toDate(time).getTime();
-    const edge = this.leadingEdgeAt(s.acq.id, tMs);
-    if (!edge) return;
-    const pose = poseAt(s.rec, tMs);
-    Cesium.Cartesian3.clone(edge.min, this.curtainPos[0]);
+    const edge = this.leadingEdgeAt(acq, origin, axis, params, tMs);
+    const pose = poseAt(rec, tMs);
+    Cesium.Cartesian3.clone(edge.min, curtainPos[0]);
     if (pose) {
-      this.curtainPos[1].x = pose.pos[0];
-      this.curtainPos[1].y = pose.pos[1];
-      this.curtainPos[1].z = pose.pos[2];
+      curtainPos[1].x = pose.pos[0];
+      curtainPos[1].y = pose.pos[1];
+      curtainPos[1].z = pose.pos[2];
     } else {
-      this.curtainPos[1].x = 0;
-      this.curtainPos[1].y = 0;
-      this.curtainPos[1].z = 0;
+      curtainPos[1].x = 0;
+      curtainPos[1].y = 0;
+      curtainPos[1].z = 0;
     }
-    Cesium.Cartesian3.clone(edge.max, this.curtainPos[2]);
+    Cesium.Cartesian3.clone(edge.max, curtainPos[2]);
   }
 
-  /** Current leading edge of the active acquisition sweep. */
-  private leadingEdgeAt(id: string, tMs: number): LeadingEdge | null {
-    const s = this.sweep;
-    if (!s || s.acq.id !== id) return null;
-    const span = s.acq.endMs - s.acq.startMs;
-    const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
-    const tLead = s.params.tMin + prog * (s.params.tMax - s.params.tMin);
-    const leadMin = projectPoint([tLead, s.params.cMin], s.origin, s.axis);
-    const leadCenter = projectPoint([tLead, (s.params.cMin + s.params.cMax) / 2], s.origin, s.axis);
-    const leadMax = projectPoint([tLead, s.params.cMax], s.origin, s.axis);
+  /** Current leading edge of an active acquisition sweep. */
+  private leadingEdgeAt(
+    acq: Acquisition,
+    origin: [number, number],
+    axis: [number, number],
+    params: NonNullable<SliceResult['params']>,
+    tMs: number,
+  ): LeadingEdge {
+    const span = acq.endMs - acq.startMs;
+    const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - acq.startMs) / span)) : 0;
+    const tLead = params.tMin + prog * (params.tMax - params.tMin);
+    const leadMin = projectPoint([tLead, params.cMin], origin, axis);
+    const leadCenter = projectPoint([tLead, (params.cMin + params.cMax) / 2], origin, axis);
+    const leadMax = projectPoint([tLead, params.cMax], origin, axis);
     return {
       min: Cesium.Cartesian3.fromDegrees(leadMin[0], leadMin[1], 0),
       center: Cesium.Cartesian3.fromDegrees(leadCenter[0], leadCenter[1], 0),
@@ -261,27 +276,23 @@ export class AcquisitionRenderer {
     };
   }
 
-  /** Reveal sweep bands up to the current progress fraction. */
+  /** Reveal every active sweep's bands up to its current progress fraction. */
   fillProgress(tMs: number): void {
-    const s = this.sweep;
-    if (!s) return;
-    const span = s.acq.endMs - s.acq.startMs;
-    const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
-    const k = Math.round(prog * s.bands.length);
-    for (let i = 0; i < s.bands.length; i++) s.bands[i].show = i < k;
-  }
-
-  clearSweep(): void {
-    this.sweepSeq++;
-    const s = this.sweep;
-    if (s) {
-      for (const b of s.bands) this.viewer.entities.remove(b);
-      this.viewer.entities.remove(s.beam);
-      this.sweep = null;
+    for (const s of this.sweeps.values()) {
+      const span = s.acq.endMs - s.acq.startMs;
+      const prog = span > 0 ? Math.min(1, Math.max(0, (tMs - s.acq.startMs) / span)) : 0;
+      const k = Math.round(prog * s.bands.length);
+      for (let i = 0; i < s.bands.length; i++) s.bands[i].show = i < k;
     }
   }
 
   stopSweep(id: string): void {
-    if (this.sweep && this.sweep.acq.id === id) this.clearSweep();
+    this.pendingSweeps.delete(id);
+    const s = this.sweeps.get(id);
+    if (s) {
+      for (const b of s.bands) this.viewer.entities.remove(b);
+      this.viewer.entities.remove(s.beam);
+      this.sweeps.delete(id);
+    }
   }
 }
