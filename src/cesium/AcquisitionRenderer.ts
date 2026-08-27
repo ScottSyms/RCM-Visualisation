@@ -24,6 +24,7 @@ import { localFrameFromPose } from '../../scripts/data/slicing.ts';
 import { projectPoint } from '../lib/geometry.ts';
 import { Slicer, type SliceResult } from '../lib/slicer.ts';
 import { INGEST } from '../../scripts/data/constants.ts';
+import { entityId, parseAcqId, parseSatNorad } from '../lib/entity-pick.ts';
 
 // Warm accent family: pops against the desaturated navy oceans (spec §5.3) and
 // stays clear of the satellite hues (teal / violet / amber).
@@ -147,11 +148,15 @@ export class AcquisitionRenderer {
   /** Hits-test a client (window) coordinate. Returns the acquisition id or null. */
   pick(clientX: number, clientY: number): string | null {
     const picked = this.viewer.scene.pick(new Cesium.Cartesian2(clientX, clientY));
-    if (!picked) return null;
-    const eid = (picked as { id?: unknown }).id;
-    if (typeof eid !== 'string' || !eid.startsWith('acq-')) return null;
-    const m = eid.match(/^acq-(.+)-\d+$/);
-    return m ? m[1] : null;
+    const eid = entityId(picked);
+    return eid ? parseAcqId(eid) : null;
+  }
+
+  /** Hits-test a client coordinate for a satellite entity. Returns the NORAD id or null. */
+  pickSat(clientX: number, clientY: number): number | null {
+    const picked = this.viewer.scene.pick(new Cesium.Cartesian2(clientX, clientY));
+    const eid = entityId(picked);
+    return eid ? parseSatNorad(eid) : null;
   }
 
   getAcq(id: string): Acquisition | undefined {

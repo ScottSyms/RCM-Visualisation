@@ -19,6 +19,7 @@
     onSpeed,
     onSeek,
     onTimestampSeek,
+    onEndSeek,
     onCopyLink,
     onMode,
     onSatelliteViewHeight,
@@ -37,6 +38,7 @@
     onSpeed: (m: number) => void;
     onSeek: (ms: number) => void;
     onTimestampSeek: (ms: number) => void;
+    onEndSeek: (ms: number) => void;
     onCopyLink: (ms: number) => Promise<void>;
     onMode: (m: CameraMode) => void;
     onSatelliteViewHeight: (deltaKm: number) => void;
@@ -50,6 +52,9 @@
   let editingTimestamp = $state(false);
   let dateInput = $state('');
   let timeInput = $state('');
+  let editingEnd = $state(false);
+  let endDateInput = $state('');
+  let endTimeInput = $state('');
   let mobileCollapsed = $state(true);
   let copyStatus = $state<'idle' | 'copied' | 'error'>('idle');
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
@@ -59,9 +64,15 @@
   $effect(() => {
     if (!editingTimestamp && Number.isFinite($nowMs)) setTimestampInputs($nowMs);
   });
+  $effect(() => {
+    if (!editingEnd && Number.isFinite(endMs)) setEndInputs(endMs);
+  });
 
   function setTimestampInputs(timestampMs: number): void {
     [dateInput, timeInput] = formatUtcInput(timestampMs).split('T');
+  }
+  function setEndInputs(timestampMs: number): void {
+    [endDateInput, endTimeInput] = formatUtcInput(timestampMs).split('T');
   }
 
   const speeds = [1, 10, 60, 300, 1200];
@@ -95,6 +106,28 @@
     if (e.key !== 'Escape') return;
     setTimestampInputs($nowMs);
     editingTimestamp = false;
+    (e.currentTarget as HTMLInputElement).blur();
+  }
+  function submitEnd(e: SubmitEvent): void {
+    e.preventDefault();
+    const parsed = parseUtcTimestamp(`${endDateInput}T${endTimeInput}`);
+    if (parsed == null) {
+      setEndInputs(endMs);
+      editingEnd = false;
+      return;
+    }
+    let clamped = clampTimestamp(parsed, startMs, endMs > startMs ? 2147483647000 : endMs);
+    // clamp to mission window via startMs..far future then enforce order
+    // Use current startMs as lower bound, allow any future up to large limit, then App will clamp to true win
+    if (clamped < startMs) clamped = startMs;
+    setEndInputs(clamped);
+    editingEnd = false;
+    onEndSeek(clamped);
+  }
+  function endKeydown(e: KeyboardEvent): void {
+    if (e.key !== 'Escape') return;
+    setEndInputs(endMs);
+    editingEnd = false;
     (e.currentTarget as HTMLInputElement).blur();
   }
   async function copyLink(): Promise<void> {
@@ -150,6 +183,32 @@
       <button class="tl-copy" type="button" onclick={() => void copyLink()}>
         {copyStatus === 'copied' ? 'Copied' : copyStatus === 'error' ? 'Retry' : 'Copy'}
       </button>
+    </form>
+    <form class="tl-time" onsubmit={submitEnd} title="Set window end (UTC)">
+      <input
+        class="tl-date"
+        type="date"
+        bind:value={endDateInput}
+        onfocus={() => (editingEnd = true)}
+        onkeydown={endKeydown}
+        aria-label="Playback end date in UTC"
+        required
+      />
+      <input
+        class="tl-clock"
+        type="text"
+        inputmode="numeric"
+        placeholder="HH:mm:ss"
+        pattern="(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d"
+        maxlength="8"
+        bind:value={endTimeInput}
+        onfocus={() => (editingEnd = true)}
+        onkeydown={endKeydown}
+        aria-label="Playback end time in UTC, 24-hour format"
+        required
+      />
+      <span>UTC</span>
+      <button type="submit">Set end</button>
     </form>
     <button class="tl-btn play" onclick={onTogglePlay} title="Play / pause">
       {$playing ? '⏸' : '▶'}

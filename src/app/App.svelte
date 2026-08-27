@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { createViewer } from '../cesium/ViewerFactory.ts';
   import { loadMissionData, plannedWindow } from '../lib/data.ts';
-  import { buildPlaybackUrl, resolvePlaybackStart } from '../lib/playback-time.ts';
+  import { buildPlaybackUrl, buildPlaybackWindowUrl, resolvePlaybackWindow } from '../lib/playback-time.ts';
   import { MissionController } from '../mission/MissionController.ts';
   import Timeline from '../timeline/Timeline.svelte';
   import LayerDrawer from '../ui/LayerDrawer.svelte';
@@ -32,8 +32,17 @@
     window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
   }
 
+  function setPlaybackWindow(s: number, e: number): void {
+    if (!ctrl) return;
+    ctrl.setWindow(s, e);
+    startMs = ctrl.clock.startTimeMs;
+    endMs = ctrl.clock.stopTimeMs;
+    const url = new URL(buildPlaybackWindowUrl(window.location.href, startMs, endMs));
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
   async function copyPlaybackLink(ms: number): Promise<void> {
-    const link = buildPlaybackUrl(window.location.href, ms);
+    const link = buildPlaybackUrl(window.location.href, ms, endMs);
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(link);
       return;
@@ -67,6 +76,11 @@
     pickFn = (e: MouseEvent) => {
       if (e.button !== 0 || e.defaultPrevented) return;
       if (!ctrl || !viewer) return;
+      const satNorad = ctrl.pickSatAt(e.clientX, e.clientY);
+      if (satNorad != null) {
+        ctrl.selectSat(satNorad);
+        return;
+      }
       const id = ctrl.pickAt(e.clientX, e.clientY);
       if (id) ctrl.selectAcq(id);
     };
@@ -91,20 +105,21 @@
         err = 'No planned acquisitions were found in the data set.';
         return;
       }
-      const seed = resolvePlaybackStart(
-        new URLSearchParams(window.location.search).get('start'),
+      const params = new URLSearchParams(window.location.search);
+      const winResolved = resolvePlaybackWindow(
+        params.get('start'),
+        params.get('end'),
         data.manifest.clockSeedMs ?? win.startMs,
         win.startMs,
         win.endMs,
       );
-      const runtimeStart = Math.min(win.startMs, seed);
       await ctrl.build(
         { manifest: data.manifest, satellites: data.satellites, planned: data.planned, past: data.past },
         data.ephemeris,
-        { startMs: runtimeStart, endMs: win.endMs, seedMs: seed },
+        { startMs: winResolved.startMs, endMs: winResolved.endMs, seedMs: winResolved.startMs },
       );
-      startMs = runtimeStart;
-      endMs = win.endMs;
+      startMs = winResolved.startMs;
+      endMs = winResolved.endMs;
       phase = 'ready';
     } catch (e) {
       const se = e as { name?: string; notFound?: boolean };
@@ -197,6 +212,7 @@
     onSpeed={(m) => ctrl?.setSpeed(m)}
     onSeek={(ms) => ctrl?.seek(ms)}
     onTimestampSeek={seekFromTimestamp}
+    onEndSeek={(ms) => setPlaybackWindow(startMs, ms)}
     onCopyLink={copyPlaybackLink}
     onMode={(m) => ctrl?.setMode(m)}
     onSatelliteViewHeight={(deltaKm) => ctrl?.adjustSatelliteViewHeight(deltaKm)}

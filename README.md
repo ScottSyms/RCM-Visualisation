@@ -14,8 +14,8 @@ This is an independent visualisation and is not an official product of the Canad
 
 - SGP4 propagation for RCM-1, RCM-2, and RCM-3
 - Time-aware planned and active acquisition footprints
-- Animated, side-looking SAR acquisition sweeps
-- Six-hour completed-acquisition highlighting
+- Animated, side-looking SAR acquisition sweeps (concurrent multi-satellite)
+- Three-hour retention for planned footprints and highlighted selections
 - Satellite trails and optional ground tracks
 - Searchable acquisition metadata
 - Timeline scrubbing and playback from 1x to 1200x
@@ -57,11 +57,12 @@ npm run dev
 Vite serves the application at `http://localhost:5173` by default.
 
 To open the visualisation at a specific UTC playback timestamp, provide an ISO-8601
-`start` query parameter. Invalid values use the generated mission clock seed, and
-timestamps outside the mission window are clamped to the nearest boundary.
+`start` query parameter. To bound playback, also provide `end`. Invalid values
+use the generated mission defaults, out-of-window values are clamped, and
+`end < start` is clamped to `start`.
 
 ```text
-http://localhost:5173/?start=2026-09-08T16:49:00Z
+http://localhost:5173/?start=2026-09-08T16:49:00Z&end=2026-09-09T00:00:00Z
 ```
 
 ## Commands
@@ -103,15 +104,19 @@ The pipeline publishes the lightweight `past.points.json` derivative instead of 
 
 Mission data is refreshed whenever a new deployment runs. Use a scheduled deployment or build hook if the hosted visualisation should refresh automatically.
 
+## User Guide
+
+See the full interface guide with annotated screenshots in [USER_GUIDE.md](USER_GUIDE.md).
+
 ## Controls
 
 - Use the timeline to play, pause, change speed, or seek.
-- Enter a UTC timestamp in the timeline and select **Go** to seek and update the shareable `start` URL.
+- Enter a UTC timestamp (`YYYY-MM-DD` + `HH:mm:ss` 24h) and select **Go** to seek; use **Copy** beside it to copy a shareable `?start=` + `?end=` link. Set the **End** date/time and select **Set end** to bound the playback window (`end` is clamped to `>= start`).
 - On phones, use the **Browse** and **Info** edge handles to expand the acquisition and detail drawers.
 - The phone timeline starts collapsed; use the bottom arrow to reveal or hide the full playback controls.
+- Click a satellite point/label on the globe to select it and open its card, then choose **Follow** to track it.
 - Select **Globe** for the overview camera.
-- Select a satellite and choose **Follow** to track it closely.
-- Select an acquisition and choose **Satellite view** for the wide trailing perspective.
+- Select an acquisition (on the globe or in **Browse → Acquisitions**) and choose **Satellite view** for the wide trailing perspective.
 - In Satellite view, use the satellite selector and `-` / `+` controls to change spacecraft and view height.
 - Select **Satellite** in the timeline or **Exit view** in the acquisition card to leave Satellite view.
 - Enable planned footprints, historical coverage, and ground tracks from the layer drawer.

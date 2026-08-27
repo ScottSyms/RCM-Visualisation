@@ -213,6 +213,16 @@ export class MissionController {
     return { startMs: this.clock.startTimeMs, endMs: this.clock.stopTimeMs };
   }
 
+  setWindow(startMs: number, endMs: number): void {
+    const lo = Math.min(startMs, endMs);
+    const hi = Math.max(startMs, endMs);
+    const now = this.clock.nowMs;
+    const seed = Math.min(Math.max(now, lo), hi);
+    this.clock.setWindow(lo, hi, seed);
+    this.nowMs.set(this.clock.nowMs);
+    this.syncAtTime(this.clock.nowMs, true);
+  }
+
   setMode(mode: CameraMode): void {
     if (mode === 'overview') {
       if (this.cameraSatName) this.exitAcquisitionView();
@@ -237,6 +247,11 @@ export class MissionController {
   /** Screen (client) coordinate hits-test. Returns the acquisition id or null. */
   pickAt(clientX: number, clientY: number): string | null {
     return this.renderer.pick(clientX, clientY);
+  }
+
+  /** Screen hit-test for a satellite entity. Returns the NORAD id or null. */
+  pickSatAt(clientX: number, clientY: number): number | null {
+    return this.renderer.pickSat(clientX, clientY);
   }
 
   selectSat(norad: number | null): void {
