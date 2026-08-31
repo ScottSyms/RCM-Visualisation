@@ -2,7 +2,7 @@ name: Daily Cloudflare Pages rebuild
 
 on:
   schedule:
-    - cron: '10 7 * * *'
+    - cron: '40 8 * * *'
       timezone: 'America/Halifax'
 
   # Lets you test it manually from the GitHub Actions page
