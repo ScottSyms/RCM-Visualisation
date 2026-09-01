@@ -2,8 +2,9 @@ name: Daily Cloudflare Pages rebuild
 
 on:
   schedule:
-    - cron: '00 07 * * *'
-      timezone: 'America/Halifax'
+    # 12:30 America/Halifax => 15:30 UTC (ADT, UTC-3 summer) / 16:30 UTC (AST, UTC-4 winter)
+    # Single UTC cron: uses 15:30 UTC so it fires at 12:30 ADT in summer, 11:30 AST in winter
+    - cron: '30 15 * * *'
 
   # Lets you test it manually from the GitHub Actions page
   workflow_dispatch:
