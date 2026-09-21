@@ -4,11 +4,13 @@
  * POST { query: string, nowMs: number } -> { intent: CommandIntent }
  *
  * Translates a short free-text command into one of a closed set of
- * `CommandIntent`s (src/mission/types.ts) using Workers AI JSON mode, so the
+ * `CommandIntent`s (src/mission/types.ts) using Workers AI's `json_object`
+ * mode (the model's `json_schema` mode isn't supported on every catalog
+ * model, so the shape is described in the system prompt instead), so the
  * model can only ever select from actions the client already knows how to
  * execute safely — it never invents an acquisition id or free-form state.
- * `toCommandIntent` re-validates every field itself; the JSON Schema keeps
- * the model on-format but is not trusted as the sole guard.
+ * `toCommandIntent` re-validates every field itself; the prompt keeps the
+ * model on-format but is not trusted as the sole guard.
  *
  * Rate-limited per IP using the same D1 database Part A provisioned for the
  * acquisition archive (see migrations/0002_command_rate_limit.sql) — the
@@ -23,7 +25,8 @@ interface Env {
 }
 
 // @cf/meta/llama-3.1-8b-instruct was deprecated 2026-05-30; -fp8 is its
-// current, JSON-schema-capable replacement in the Workers AI catalog.
+// current replacement in the Workers AI catalog. It supports json_object
+// mode but not json_schema, hence the prompt (not a schema) below.
 const MODEL = '@cf/meta/llama-3.1-8b-instruct-fp8';
 const SATELLITES: RcmSatelliteName[] = ['RCM-1', 'RCM-2', 'RCM-3'];
 const LAYERS = ['planned', 'past', 'groundTrack'] as const;
@@ -32,58 +35,27 @@ const MAX_QUERY_CHARS = 300;
 const RATE_LIMIT_PER_MINUTE = 8;
 const RATE_WINDOW_MS = 60_000;
 
-const JSON_SCHEMA = {
-  type: 'object',
-  properties: {
-    type: {
-      type: 'string',
-      enum: [
-        'selectSatellite',
-        'clearSelection',
-        'setSatelliteFilter',
-        'setLayerVisible',
-        'setCameraMode',
-        'setPlaying',
-        'setSpeed',
-        'seek',
-        'seekRelative',
-        'seekNow',
-        'unrecognized',
-      ],
-    },
-    satellite: { type: 'string', enum: SATELLITES },
-    satellites: { type: 'array', items: { type: 'string', enum: SATELLITES } },
-    layer: { type: 'string', enum: LAYERS },
-    visible: { type: 'boolean' },
-    mode: { type: 'string', enum: MODES },
-    playing: { type: 'boolean' },
-    multiplier: { type: 'number' },
-    iso: { type: 'string' },
-    deltaSeconds: { type: 'number' },
-    reason: { type: 'string' },
-  },
-  required: ['type'],
-} as const;
-
 function systemPrompt(nowIso: string): string {
-  return `You translate a short natural-language command about a live satellite mission dashboard into exactly one structured action. Respond only through the JSON schema — no prose, no extra fields.
+  return `You translate a short natural-language command about a live satellite mission dashboard into exactly one structured action. Respond with a single raw JSON object only — no markdown, no code fences, no prose, no extra fields.
 
 Current mission time: ${nowIso} (UTC). The three spacecraft are RCM-1, RCM-2, RCM-3 (RADARSAT Constellation Mission, a Canadian SAR constellation).
 
-Actions:
-- selectSatellite: focus the camera on one spacecraft. requires "satellite".
-- clearSelection: deselect the current satellite/acquisition.
-- setSatelliteFilter: show only certain spacecraft's planned footprints. requires "satellites" (empty array means show all).
-- setLayerVisible: toggle a layer on or off. requires "layer" (planned = upcoming footprints, past = historical coverage dots, groundTrack = orbit ground tracks) and "visible".
-- setCameraMode: switch camera mode. requires "mode" (overview | follow). For "follow", also set "satellite" if the command names one.
-- setPlaying: start or stop timeline playback. requires "playing".
-- setSpeed: set the playback speed multiplier (typical values: 1, 10, 60, 300, 1800). requires "multiplier".
-- seek: jump to an absolute UTC time explicitly stated in the command (a date/time was given). requires "iso" (ISO-8601 UTC).
-- seekRelative: jump forward or backward by a duration relative to the current mission time (e.g. "forward 6 hours", "back 2 days"). requires "deltaSeconds" (negative = backward).
-- seekNow: return the mission clock to the current real-world time (e.g. "now", "reset the clock").
-- unrecognized: the command doesn't map to any action above — including asking to find or describe a specific acquisition by place/subject, since there is no action for that. requires "reason" (short, plain language).
+Every response has a "type" field naming one action below, plus that action's listed fields:
+- selectSatellite: focus the camera on one spacecraft. fields: "satellite" (one of RCM-1, RCM-2, RCM-3).
+- clearSelection: deselect the current satellite/acquisition. no other fields.
+- setSatelliteFilter: show only certain spacecraft's planned footprints. fields: "satellites" (array of RCM-1/RCM-2/RCM-3; empty array means show all).
+- setLayerVisible: toggle a layer on or off. fields: "layer" (one of "planned" = upcoming footprints, "past" = historical coverage dots, "groundTrack" = orbit ground tracks) and "visible" (boolean).
+- setCameraMode: switch camera mode. fields: "mode" (one of "overview", "follow"). For "follow", also include "satellite" if the command names one.
+- setPlaying: start or stop timeline playback. fields: "playing" (boolean).
+- setSpeed: set the playback speed multiplier. fields: "multiplier" (number; typical values 1, 10, 60, 300, 1800).
+- seek: jump to an absolute UTC time explicitly stated in the command. fields: "iso" (ISO-8601 UTC string).
+- seekRelative: jump forward or backward by a duration relative to the current mission time (e.g. "forward 6 hours", "back 2 days"). fields: "deltaSeconds" (number; negative = backward).
+- seekNow: return the mission clock to the current real-world time (e.g. "now", "reset the clock"). no other fields.
+- unrecognized: the command doesn't map to any action above — including asking to find or describe a specific acquisition by place/subject, since there is no action for that. fields: "reason" (short, plain language).
 
-Only include fields relevant to the chosen "type". Never invent an acquisition id or a satellite name outside RCM-1/RCM-2/RCM-3.`;
+Example: {"type": "setSpeed", "multiplier": 60}
+
+Only include fields listed for the chosen "type". Never invent an acquisition id or a satellite name outside RCM-1/RCM-2/RCM-3.`;
 }
 
 interface RawIntent {
@@ -211,7 +183,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         { role: 'system', content: systemPrompt(new Date(nowMs).toISOString()) },
         { role: 'user', content: query },
       ],
-      response_format: { type: 'json_schema', json_schema: JSON_SCHEMA },
+      response_format: { type: 'json_object' },
     });
     const raw = extractRaw(result);
     const intent = raw ? toCommandIntent(raw) : unrecognized('model returned no structured output');
