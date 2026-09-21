@@ -10,7 +10,7 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "rcm-acquisitions"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "4fd20da2-c541-4143-b0b2-3a941f4e8e43"
 migrations_dir = "migrations"
 
 # Natural-language command bar (see functions/api/command.ts). No setup
