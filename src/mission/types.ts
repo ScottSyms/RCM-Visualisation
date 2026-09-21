@@ -51,3 +51,26 @@ export interface AcquisitionGeometry {
   footprint: [number, number][][];
   centroid: [number, number] | null;
 }
+
+/** One of the three RCM spacecraft, by their `satid`/timeline name. */
+export type RcmSatelliteName = 'RCM-1' | 'RCM-2' | 'RCM-3';
+
+/**
+ * A structured action produced by the natural-language command bar
+ * (functions/api/command.ts) and applied by src/mission/CommandExecutor.ts.
+ * Deliberately closed and small: nothing here lets the model invent an
+ * acquisition id — acquisition-level search stays out of AI scope for now
+ * (see README's Command Bar section).
+ */
+export type CommandIntent =
+  | { type: 'selectSatellite'; satellite: RcmSatelliteName }
+  | { type: 'clearSelection' }
+  | { type: 'setSatelliteFilter'; satellites: RcmSatelliteName[] }
+  | { type: 'setLayerVisible'; layer: 'planned' | 'past' | 'groundTrack'; visible: boolean }
+  | { type: 'setCameraMode'; mode: 'overview' | 'follow'; satellite?: RcmSatelliteName }
+  | { type: 'setPlaying'; playing: boolean }
+  | { type: 'setSpeed'; multiplier: number }
+  | { type: 'seek'; ms: number }
+  | { type: 'seekRelative'; deltaSeconds: number }
+  | { type: 'seekNow' }
+  | { type: 'unrecognized'; reason: string };

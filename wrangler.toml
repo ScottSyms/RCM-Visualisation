@@ -1,0 +1,19 @@
+name = "rcm-mission-visualisation"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+# Acquisition archive (see scripts/data/archive.ts, migrations/).
+# Create once with:
+#   wrangler d1 create rcm-acquisitions
+# then paste the returned database_id below and run:
+#   wrangler d1 migrations apply rcm-acquisitions --remote
+[[d1_databases]]
+binding = "DB"
+database_name = "rcm-acquisitions"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# Natural-language command bar (see functions/api/command.ts). No setup
+# needed beyond this binding — Workers AI is available on every account.
+[ai]
+binding = "AI"

@@ -3,6 +3,7 @@ import { arcGisFetchAll, buildTle, httpGetText, parseCelestrakRows } from './fet
 import { CELESTRAK, GOV, INGEST } from './constants.ts';
 import { normalizeFeature } from './normalize.ts';
 import { buildEphemerisPackage, buildSamplers } from './ephemeris.ts';
+import { archiveQueryWindow, archiveUpsert, loadD1ConfigFromEnv } from './archive.ts';
 import type { Acquisition, Satellite } from './model.ts';
 
 // Trailing slash: write() resolves each filename against this URL.
@@ -80,6 +81,19 @@ export async function run(): Promise<void> {
     .filter((a): a is Acquisition => a != null);
   log(`normalized planned=${planned.length} past=${past.length}`);
 
+  // Merge this run's fetch into the persistent D1 archive (dedup by stable
+  // id), then publish `past` from the full accumulated archive rather than
+  // just this run's -200d/+7d fetch window, so acquisitions the government
+  // service stops serving stay visible across builds. See archive.ts.
+  const d1 = loadD1ConfigFromEnv();
+  await archiveUpsert(d1, [...planned, ...past], log);
+  const archiveFromMs = nowMs - INGEST.archivePublishWindowDays * DAY;
+  const archivedPast = d1 ? await archiveQueryWindow(d1, 'past', archiveFromMs, nowMs + DAY) : [];
+  const publishedPast = archivedPast.length > 0 ? archivedPast : past;
+  log(
+    `publishing past=${publishedPast.length} (${d1 ? `from D1 archive, last ${INGEST.archivePublishWindowDays}d` : 'from this fetch — D1 not configured'})`,
+  );
+
   // Ephemeris raw-sample package over the planned (active) window.
   const pw = windowOf(planned);
   const all = { ...windowOf([...planned, ...past]) };
@@ -94,7 +108,7 @@ export async function run(): Promise<void> {
     generatedAt: new Date().toISOString(),
     source: { arcgis: GOV.mapServer, celestrak: CELESTRAK.baseUrl },
     window: { startMs: all.startMs ?? 0, endMs: all.endMs ?? 0 },
-    past: { count: past.length, ...windowOf(past) },
+    past: { count: publishedPast.length, ...windowOf(publishedPast) },
     planned: { count: planned.length, ...windowOf(planned) },
     clockSeedMs,
     satellites: satellites.map(({ norad, name, intl, epochMs }) => ({ norad, name, intl, epochMs })),
@@ -117,7 +131,7 @@ export async function run(): Promise<void> {
   // footprint archive: it exceeds static-host per-file limits and is unused.
   write(
     'past.points.json',
-    past.map((a) => ({ sat: a.satid, startMs: a.startMs, endMs: a.endMs, centroid: a.centroid })),
+    publishedPast.map((a) => ({ sat: a.satid, startMs: a.startMs, endMs: a.endMs, centroid: a.centroid })),
   );
   write('ephemeris.json', ephemeris);
 

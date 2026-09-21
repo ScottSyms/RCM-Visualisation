@@ -10,6 +10,7 @@
   import AcquisitionCard from '../ui/AcquisitionCard.svelte';
   import SatelliteCard from '../ui/SatelliteCard.svelte';
   import Diagnostics from '../ui/Diagnostics.svelte';
+  import Search from '../ui/Search.svelte';
 
   type Phase = 'loading' | 'ready' | 'error' | 'nodata';
   type MobileDrawer = 'browse' | 'info' | null;
@@ -152,6 +153,8 @@
     <div class="hdr-h"><span class="dot"></span>RCM · Mission Visualisation</div>
     <div class="hdr-sub">RADARSAT Constellation Mission — live orbital + acquisition</div>
   </div>
+
+  <Search controller={ctrl} />
 
   {#if mobileDrawer}
     <button class="mobile-drawer-scrim" onclick={closeMobileDrawer} aria-label="Close information drawer"></button>

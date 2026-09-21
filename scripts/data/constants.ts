@@ -36,6 +36,13 @@ export const INGEST = {
   ephemerisStepMs: 120_000,
   /** seconds of camera pre-roll before the first planned acquisition. */
   clockPreRollMs: 30_000,
+  /**
+   * How much of the D1-backed acquisition archive to publish into
+   * `past.points.json` (days, trailing from now). The archive itself
+   * retains acquisitions indefinitely; this only bounds the static file
+   * so it stays a predictable size as the archive grows across builds.
+   */
+  archivePublishWindowDays: 365,
   resources: {
     timeoutMs: 300_000,
     maxBytes: 256 * 1024 * 1024,
