@@ -216,7 +216,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const raw = extractRaw(result);
     const intent = raw ? toCommandIntent(raw) : unrecognized('model returned no structured output');
     return json({ intent });
-  } catch {
-    return json({ intent: unrecognized('AI request failed') }, 502);
+  } catch (err) {
+    // TEMP DEBUG — remove once the AI binding is confirmed working.
+    return json({ intent: unrecognized(`AI request failed: ${err instanceof Error ? err.message : String(err)}`) }, 502);
   }
 };
