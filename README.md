@@ -120,7 +120,7 @@ Tune this in [scripts/data/constants.ts](scripts/data/constants.ts).
 Press `/` or ⌘K/Ctrl+K to open a natural-language command bar — e.g. *"follow
 RCM-2"*, *"hide historical coverage"*, *"jump forward 6 hours"*, *"speed
 300x"*. A Cloudflare Pages Function ([functions/api/command.ts](functions/api/command.ts))
-sends the query to Workers AI (`@cf/meta/llama-3.1-8b-instruct`, JSON mode)
+sends the query to Workers AI (`@cf/meta/llama-3.1-8b-instruct-fp8`, JSON mode)
 and maps the response onto a **closed set** of actions the client already
 knows how to execute — [src/mission/types.ts](src/mission/types.ts)'s
 `CommandIntent`. The model can select a satellite, toggle a layer, change

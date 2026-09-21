@@ -22,7 +22,9 @@ interface Env {
   DB: D1Database;
 }
 
-const MODEL = '@cf/meta/llama-3.1-8b-instruct';
+// @cf/meta/llama-3.1-8b-instruct was deprecated 2026-05-30; -fp8 is its
+// current, JSON-schema-capable replacement in the Workers AI catalog.
+const MODEL = '@cf/meta/llama-3.1-8b-instruct-fp8';
 const SATELLITES: RcmSatelliteName[] = ['RCM-1', 'RCM-2', 'RCM-3'];
 const LAYERS = ['planned', 'past', 'groundTrack'] as const;
 const MODES = ['overview', 'follow'] as const;
@@ -214,8 +216,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const raw = extractRaw(result);
     const intent = raw ? toCommandIntent(raw) : unrecognized('model returned no structured output');
     return json({ intent });
-  } catch (err) {
-    // TEMP DEBUG — remove once the AI binding is confirmed working.
-    return json({ intent: unrecognized(`AI request failed: ${err instanceof Error ? err.message : String(err)}`) }, 502);
+  } catch {
+    return json({ intent: unrecognized('AI request failed') }, 502);
   }
 };
