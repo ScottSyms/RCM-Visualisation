@@ -216,6 +216,6 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return json({ intent });
   } catch (err) {
     // TEMP DEBUG — remove once the AI binding is confirmed working.
-    return json({ intent: unrecognized(`AI request failed: ${err instanceof Error ? err.message : String(err)}`) }, 502);
+    return json({ intent: unrecognized(`ZZZ_DEBUG_MARKER :: ${err instanceof Error ? err.message : String(err)}`) }, 502);
   }
 };
